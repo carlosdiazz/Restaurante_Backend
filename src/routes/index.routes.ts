@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import userRouters from './user.routes'
+import productRouters from './product.routes'
 import boom from '@hapi/boom'
 
 const routerAPI = (app) => {
@@ -7,6 +8,7 @@ const routerAPI = (app) => {
 
     app.use('/api/v1', routerV1)
         routerV1.use('/users', userRouters)
+        routerV1.use('/products', productRouters)
 
 
     app.all('*', (_req,_res,next) =>{

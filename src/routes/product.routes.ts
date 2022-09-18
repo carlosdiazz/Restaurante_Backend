@@ -1,48 +1,46 @@
 import {Router} from 'express'
-import * as userService from '../services/user.service'
+import * as productService from '../services/product.service'
 
-const userRouters = Router()
+const productRouters = Router()
 
-
-userRouters.get(
+productRouters.get(
     '/',
     //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
-    userService.getAlleUser
+    productService.getAllProduct
 )
 
-userRouters.get(
+productRouters.get(
     '/:id',
     //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
-    userService.getOneUser
+    productService.getOneProduct
 )
 
-userRouters.put(
+productRouters.put(
     '/:id',
     //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
-
-    userService.updateUser
+    productService.updateProduct
 )
 
-userRouters.delete(
+productRouters.delete(
     '/:id',
     //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
-    userService.deleteUser
+    productService.deleteProduct
 )
 
-userRouters.post(
+productRouters.post(
     //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
     '/',
-    userService.createUser
+    productService.createProduct
 )
 
-export default userRouters;
+export default productRouters;
