@@ -2,11 +2,12 @@ import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from '../database/models/user.models'
 import {encryptPasswoird} from '../libs/encryptedPassword'
-import {validateSchema} from '../libs/validarSchemas'
-import {createUserSchema} from '../schemas/user.schemas'
 //import roleModel from '../database/models/role.models'
+import {Request,Response, NextFunction} from 'express'
+import { createUserType } from '../schemas/user.schemas'
 
-export const getOneUser = async(req, res, next)=>{
+
+export const getOneUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
         const user = await userModel.findById(id).populate('role', 'name -_id')
@@ -21,7 +22,7 @@ export const getOneUser = async(req, res, next)=>{
     }
 }
 
-export const getAlleUser = async(req, res, next)=>{
+export const getAlleUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const users = await userModel.find().populate('role', 'name -_id')
         if(!users){
@@ -35,11 +36,13 @@ export const getAlleUser = async(req, res, next)=>{
     }
 }
 
-export const createUser = async(req, res, next)=>{
+export const createUser = async(
+    req: Request <unknown, unknown, createUserType>,
+    res: Response,
+    next: NextFunction)=>{
     try{
         const {first_name, last_name, nickname, email, password, birth_date, role} = req.body;
 
-        validateSchema(createUserSchema, req.body)
         const passwordEncrypted = await encryptPasswoird(password)
 
         const newUser = new userModel({
@@ -63,7 +66,7 @@ export const createUser = async(req, res, next)=>{
     }
 }
 
-export const deleteUser = async(req, res, next)=>{
+export const deleteUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
         const userDeleted = await userModel.findByIdAndDelete(id).populate('role', 'name -_id')
@@ -78,9 +81,10 @@ export const deleteUser = async(req, res, next)=>{
     }
 }
 
-export const updateUser = async(req, res, next)=>{
+export const updateUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
+        console.log('AQUI')
         //! No se puede actualizar la contraseña
         const {first_name, last_name, nickname, email} = req.body
 

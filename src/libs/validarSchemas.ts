@@ -1,14 +1,21 @@
-import {ZodError} from 'zod'
+import {ZodError, AnyZodObject} from 'zod'
 import boom from '@hapi/boom'
+import {Request, Response, NextFunction} from 'express'
 
-
-export const validateSchema = (schema, data) => {
-    try{
-        schema.parse(data)
-    }catch(error){
+export const schemaValidation = (schema: AnyZodObject) => (req: Request, _res: Response, next: NextFunction) => {
+    try {
+        schema.parse(
+            {
+                body: req.body,
+                params: req.params,
+                // query: req.query,
+            }
+        )
+        next()
+    } catch (error) {
         if(error instanceof ZodError){
-            throw boom.badRequest(error.issues.map(issue => `${issue.path[0]}: ${issue.message} => ${issue.code}`).join(', '));
+            next(boom.badRequest(error.issues.map(issue => `${issue.path[0]}: ${issue.message} => ${issue.code}`).join(', ')));
         }
-        throw boom.badRequest('Error al validar el schema')
+        next(boom.badRequest())
     }
-}
+};

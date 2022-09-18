@@ -1,5 +1,8 @@
 import {Router} from 'express'
 import * as userService from '../services/user.service'
+import {schemaValidation} from '../libs/validarSchemas'
+import {createUserSchema, updateUserSchema} from '../schemas/user.schemas'
+
 const userRouters = Router()
 
 
@@ -24,7 +27,7 @@ userRouters.put(
     //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
-
+    schemaValidation(updateUserSchema),
     userService.updateUser
 )
 
@@ -41,6 +44,7 @@ userRouters.post(
     //! AGREGAR VALIDACION DE PERMISOS
     //! AGREGAR VALIDACION DE PARAMETROS
     '/',
+    schemaValidation(createUserSchema),
     userService.createUser
 )
 

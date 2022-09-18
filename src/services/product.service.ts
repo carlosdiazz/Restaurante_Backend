@@ -1,8 +1,10 @@
 import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import ProductModel from '../database/models/product.models'
+import {Request,Response, NextFunction} from 'express'
 
-export const getOneProduct = async(req, res, next)=>{
+
+export const getOneProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
         const product = await ProductModel.findById(id)
@@ -15,7 +17,7 @@ export const getOneProduct = async(req, res, next)=>{
     }
 }
 
-export const getAllProduct = async(req, res, next)=>{
+export const getAllProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const products = await ProductModel.find()
         if(!products){
@@ -27,7 +29,7 @@ export const getAllProduct = async(req, res, next)=>{
     }
 }
 
-export const createProduct = async(req, res, next)=>{
+export const createProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {name, description, price, image} = req.body;
         const newProduct = new ProductModel({
@@ -46,7 +48,7 @@ export const createProduct = async(req, res, next)=>{
     }
 }
 
-export const deleteProduct = async(req, res, next)=>{
+export const deleteProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
         const productDeleted = await ProductModel.findById(id)
@@ -63,7 +65,7 @@ export const deleteProduct = async(req, res, next)=>{
     }
 }
 
-export const updateProduct = async(req, res, next)=>{
+export const updateProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
         const {name, description, price, image} = req.body;

@@ -2,8 +2,10 @@ import {Router} from 'express'
 import userRouters from './user.routes'
 import productRouters from './product.routes'
 import boom from '@hapi/boom'
+import {Application, Request, Response} from 'express'
 
-const routerAPI = (app) => {
+
+const routerAPI = (app: Application) => {
     const routerV1 = Router()
 
     app.use('/api/v1', routerV1)
@@ -11,7 +13,7 @@ const routerAPI = (app) => {
         routerV1.use('/products', productRouters)
 
 
-    app.all('*', (_req,_res,next) =>{
+    app.all('*', (_req: Request, _res: Response ,next) =>{
         next(boom.notFound("La ruta no existe"))
     })
 
