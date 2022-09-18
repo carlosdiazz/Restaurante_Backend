@@ -1,4 +1,4 @@
-import {prop, getModelForClass, modelOptions, Ref} from '@typegoose/typegoose'
+import {prop, getModelForClass, modelOptions, Ref, ReturnModelType} from '@typegoose/typegoose'
 //import bcrypt from 'bcrypt'
 import {Role} from './role.models'
 @modelOptions({schemaOptions: {timestamps: true}})
@@ -34,6 +34,10 @@ class User {
 
     @prop({ref: () => Role})
     role: Ref<Role>[] //Relacion de muchos a muchos
+
+    static async findByNickname(this: ReturnModelType<typeof User>, nickname: string){
+        return this.findOne({nickname: nickname})
+    }
 
 }
 

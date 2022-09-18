@@ -1,6 +1,7 @@
 import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from '../database/models/user.models'
+import {encryptPasswoird} from '../libs/encryptedPassword'
 //import roleModel from '../database/models/role.models'
 
 export const getOneUser = async(req, res, next)=>{
@@ -24,6 +25,7 @@ export const getAlleUser = async(req, res, next)=>{
         if(!users){
             next(boom.notFound('No hay usuarios'))
         }
+        users.map(user => user.password = '')
         sucessResponse(req, res, users, 'Lista de usuarios',200)
 
     }catch(error){
@@ -35,12 +37,14 @@ export const createUser = async(req, res, next)=>{
     try{
         const {first_name, last_name, nickname, email, password, birth_date, role} = req.body;
 
+        const passwordEncrypted = await encryptPasswoird(password)
+
         const newUser = new userModel({
             first_name: first_name,
             last_name: last_name,
             nickname: nickname,
             email: email,
-            password: password,
+            password: passwordEncrypted,
             birth_date: birth_date,
             role: role
         })
@@ -48,6 +52,7 @@ export const createUser = async(req, res, next)=>{
         if(!userSaved){
             throw boom.badRequest('Error al crear el usuario')
         }
+        newUser.password = ''
         sucessResponse(req, res, userSaved, 'Usuario creado',201)
 
     }catch(error){
@@ -58,10 +63,11 @@ export const createUser = async(req, res, next)=>{
 export const deleteUser = async(req, res, next)=>{
     try{
         const {id} = req.params
-        const userDeleted = await userModel.findByIdAndDelete(id)
+        const userDeleted = await userModel.findByIdAndDelete(id).populate('role', 'name -_id')
         if(!userDeleted){
             throw boom.notFound('Usuario no encontrado')
         }
+        userDeleted.password = ''
         sucessResponse(req, res, userDeleted, 'Usuario eliminado',200)
 
     }catch(error){
@@ -72,7 +78,8 @@ export const deleteUser = async(req, res, next)=>{
 export const updateUser = async(req, res, next)=>{
     try{
         const {id} = req.params
-        const {first_name, last_name, nickname, email, password} = req.body
+        //! No se puede actualizar la contraseña
+        const {first_name, last_name, nickname, email} = req.body
 
         const userUpdated = await userModel.findById(id)
         if(!userUpdated){
@@ -84,11 +91,12 @@ export const updateUser = async(req, res, next)=>{
             last_name: last_name,
             nickname: nickname,
             email: email,
-            password: password,
+            //password: password,
         }, {new: true})
         if(!userUpdated){
             throw boom.notFound('Usuario no encontrado')
         }
+
         sucessResponse(req, res, userUpdated2, 'Usuario actualizado',200)
 
     }catch(error){
