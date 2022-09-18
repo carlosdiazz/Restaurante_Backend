@@ -1,6 +1,5 @@
 import {Router} from 'express'
 import * as userService from '../services/user.service'
-
 const userRouters = Router()
 
 

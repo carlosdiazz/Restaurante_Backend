@@ -3,6 +3,7 @@ import {PORT} from './config/config'
 import {connect} from './database/database'
 import {createRoles} from './libs/initialSetup'
 
+
 // Conecto a la base de datos
 connect()
 

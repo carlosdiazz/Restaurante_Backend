@@ -2,6 +2,8 @@ import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from '../database/models/user.models'
 import {encryptPasswoird} from '../libs/encryptedPassword'
+import {validateSchema} from '../libs/validarSchemas'
+import {createUserSchema} from '../schemas/user.schemas'
 //import roleModel from '../database/models/role.models'
 
 export const getOneUser = async(req, res, next)=>{
@@ -37,6 +39,7 @@ export const createUser = async(req, res, next)=>{
     try{
         const {first_name, last_name, nickname, email, password, birth_date, role} = req.body;
 
+        validateSchema(createUserSchema, req.body)
         const passwordEncrypted = await encryptPasswoird(password)
 
         const newUser = new userModel({

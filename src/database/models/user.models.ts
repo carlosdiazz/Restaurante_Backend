@@ -23,8 +23,8 @@ class User {
     @prop({required: true})
     birth_date: Date
 
-    @prop()
-    phone: string
+    @prop({default: ''})
+    phone: number
 
     @prop({default: true})
     is_active: boolean
