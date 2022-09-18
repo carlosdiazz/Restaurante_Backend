@@ -1,0 +1,21 @@
+_id: req_262d7d95185747d98111abfe0eddd74d
+type: Request
+parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
+modified: 1663473764565
+created: 1663472711945
+url: "{{ _.URL }}/api/v1/products/632697edbc000d4c9c72973f"
+name: deleteProdcut
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1663472711945
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

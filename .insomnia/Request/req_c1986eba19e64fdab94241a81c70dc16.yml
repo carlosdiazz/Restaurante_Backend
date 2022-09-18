@@ -1,0 +1,21 @@
+_id: req_c1986eba19e64fdab94241a81c70dc16
+type: Request
+parentId: fld_bb058c18bfa641cbaaa011059085f862
+modified: 1663455356930
+created: 1663455356930
+url: "{{ _.URL }}/api/v1/users"
+name: getAllUser
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1663442008357.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
