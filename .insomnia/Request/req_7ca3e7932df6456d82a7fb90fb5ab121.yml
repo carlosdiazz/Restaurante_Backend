@@ -1,0 +1,29 @@
+_id: req_7ca3e7932df6456d82a7fb90fb5ab121
+type: Request
+parentId: fld_bb058c18bfa641cbaaa011059085f862
+modified: 1663471934662
+created: 1663455385129
+url: "{{ _.URL }}/api/v1/users/63268d78a702c4c2f0aab594"
+name: updateUser
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"first_name":"OTRO NAME 2"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_aa94fd8cad544c2ebc641afd0485bf8e
+authentication: {}
+metaSortKey: -1663432066359.375
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
