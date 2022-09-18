@@ -1,4 +1,7 @@
-import {prop, getModelForClass} from '@typegoose/typegoose'
+import {prop, getModelForClass, modelOptions, Ref} from '@typegoose/typegoose'
+//import bcrypt from 'bcrypt'
+import {Role} from './role.models'
+@modelOptions({schemaOptions: {timestamps: true}})
 
 class User {
 
@@ -23,11 +26,14 @@ class User {
     @prop()
     phone: string
 
-    @prop({})
+    @prop({default: true})
     is_active: boolean
 
-    @prop({})
+    @prop({default: false})
     is_staff: boolean
+
+    @prop({ref: () => Role})
+    role: Ref<Role>[] //Relacion de muchos a muchos
 
 }
 

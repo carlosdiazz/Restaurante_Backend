@@ -1,11 +1,12 @@
 import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from '../database/models/user.models'
+//import roleModel from '../database/models/role.models'
 
 export const getOneUser = async(req, res, next)=>{
     try{
         const {id} = req.params
-        const user = await userModel.findById(id)
+        const user = await userModel.findById(id).populate('role', 'name -_id')
         if(!user){
             throw boom.notFound('Usuario no encontrado')
         }
@@ -19,7 +20,7 @@ export const getOneUser = async(req, res, next)=>{
 
 export const getAlleUser = async(req, res, next)=>{
     try{
-        const users = await userModel.find()
+        const users = await userModel.find().populate('role', 'name -_id')
         if(!users){
             next(boom.notFound('No hay usuarios'))
         }
@@ -32,7 +33,7 @@ export const getAlleUser = async(req, res, next)=>{
 
 export const createUser = async(req, res, next)=>{
     try{
-        const {first_name, last_name, nickname, email, password} = req.body;
+        const {first_name, last_name, nickname, email, password, birth_date, role} = req.body;
 
         const newUser = new userModel({
             first_name: first_name,
@@ -40,8 +41,10 @@ export const createUser = async(req, res, next)=>{
             nickname: nickname,
             email: email,
             password: password,
+            birth_date: birth_date,
+            role: role
         })
-        const userSaved = await newUser.save()
+        const userSaved = await (await newUser.save()).populate('role', 'name -_id')
         if(!userSaved){
             throw boom.badRequest('Error al crear el usuario')
         }
