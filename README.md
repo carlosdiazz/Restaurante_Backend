@@ -1,12 +1,13 @@
 ### De que Trata
 
 Este sera un proyecto de prueba de un backend, Usaremos las siguientes tencologia:
- - Node
+- Node
 - Expres
 - MONGOSE
-- MONGOs
+- TYPESCRYPT
 - JWT
-- Entre otras.
+- DOCKER
+- Entre otras
 
 
 # Carlos Diaz
