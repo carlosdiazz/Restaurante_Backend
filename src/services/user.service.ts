@@ -2,7 +2,6 @@ import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from '../database/models/user.models'
 import {encryptPasswoird} from '../libs/encryptedPassword'
-//import roleModel from '../database/models/role.models'
 import {Request,Response, NextFunction} from 'express'
 import { createUserType } from '../schemas/user.schemas'
 
@@ -84,7 +83,6 @@ export const deleteUser = async(req: Request, res: Response, next: NextFunction)
 export const updateUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
-        console.log('AQUI')
         //! No se puede actualizar la contraseña
         const {first_name, last_name, nickname, email} = req.body
 

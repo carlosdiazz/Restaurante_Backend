@@ -12,10 +12,10 @@ export const schemaValidation = (schema: AnyZodObject) => (req: Request, _res: R
             }
         )
         next()
-    } catch (error) {
+    } catch (error ) {
         if(error instanceof ZodError){
-            next(boom.badRequest(error.issues.map(issue => `${issue.path[0]}: ${issue.message} => ${issue.code}`).join(', ')));
+            throw boom.badRequest(error.issues.map(issue => `${issue.path[0]}: ${issue.message} => ${issue.code}`).join(', '));
         }
-        next(boom.badRequest())
+        throw boom.badRequest()
     }
 };

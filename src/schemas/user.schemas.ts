@@ -10,6 +10,7 @@ const phone = z.string().max(10).default('')
 const is_active = z.boolean().default(true)
 const is_staff = z.boolean().default(false)
 const role = z.array(z.string())
+const id= z.string().min(5)
 
 export const createUserSchema = z.object({
     body: z.object({
@@ -24,7 +25,6 @@ export const createUserSchema = z.object({
         is_staff: is_staff,
         role: role.optional()
     })
-
 })
 
 export const updateUserSchema = z.object({
@@ -39,7 +39,19 @@ export const updateUserSchema = z.object({
         is_staff: is_staff.optional()
     }),
     params: z.object({
-        id: z.string().min(5)
+        id: id
+    })
+})
+
+export const deleteUserSchema = z.object({
+    params: z.object({
+        id: id
+    })
+})
+
+export const getUserSchema = z.object({
+    params: z.object({
+        id: id
     })
 })
 
