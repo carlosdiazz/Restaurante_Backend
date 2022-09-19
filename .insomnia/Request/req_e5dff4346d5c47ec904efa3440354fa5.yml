@@ -1,7 +1,7 @@
 _id: req_e5dff4346d5c47ec904efa3440354fa5
 type: Request
 parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1663473875127
+modified: 1663545848672
 created: 1663472713916
 url: "{{ _.URL }}/api/v1/products/632698184454f171601b1388"
 name: UpdateProduct
@@ -11,7 +11,8 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"name":"otro name 2"
+    	"name":"otro name 2",
+    	"price":34
     }
 parameters: []
 headers:

@@ -1,9 +1,9 @@
 _id: req_7ca3e7932df6456d82a7fb90fb5ab121
 type: Request
 parentId: fld_bb058c18bfa641cbaaa011059085f862
-modified: 1663471934662
+modified: 1663544064446
 created: 1663455385129
-url: "{{ _.URL }}/api/v1/users/63268d78a702c4c2f0aab594"
+url: "{{ _.URL }}/api/v1/users/632753e3973017bb4a950a3a"
 name: updateUser
 description: ""
 method: PUT
@@ -11,7 +11,9 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"first_name":"OTRO NAME 2"
+    	"first_name":"Carlos",
+    	"nickname":"carlos",
+    	"email":"carlos@mail.com"
     }
 parameters: []
 headers:
