@@ -75,12 +75,19 @@ userRouters.get(
 )
 /**
 * @swagger
-* /api/v1/users/:id:
+* /api/v1/users/{id}:
 *   get:
 *     tags:
 *       - Users
 *     name: Get Users
 *     summary: Get all users
+*     parameters:
+*      - in: path
+*        name: id
+*        schema:
+*         type: string
+*        required: true
+*        description: id del usuario
 *     responses:
 *      200:
 *       description: "Lista de usuarios con exito"
@@ -156,9 +163,15 @@ userRouters.delete(
 *       - Users
 *     name: Post Users
 *     summary: Post all users
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             $ref: '#/components/schemas/User'
 *     responses:
 *      200:
-*       description: "Lista de usuarios con exito"
+*       description: "Crear usuario"
 *       content:
 *        application/json:
 *         schema:

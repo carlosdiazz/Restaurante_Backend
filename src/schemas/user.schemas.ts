@@ -10,7 +10,7 @@ const phone = z.string().max(10).default('')
 const is_active = z.boolean().default(true)
 const is_staff = z.boolean().default(false)
 const role = z.array(z.string())
-const id= z.string().min(5)
+const id= z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 
 export const createUserSchema = z.object({
     body: z.object({
