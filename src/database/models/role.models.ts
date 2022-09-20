@@ -9,6 +9,7 @@ export class Role {
     @prop({required: true})
     description: string
 
+    _id: string
 }
 
 export const roles = ['admin', 'user', 'moderator'];
