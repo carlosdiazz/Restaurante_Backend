@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=RESTAURANTE
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
+
+    #networks:
+    #  - mi-mongo
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=root
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    #networks:
+    #  - mi-mongo
+

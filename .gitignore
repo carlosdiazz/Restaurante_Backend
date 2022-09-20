@@ -145,3 +145,4 @@ dist
 postgres_date
 .env
 build
+data

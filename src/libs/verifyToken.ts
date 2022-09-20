@@ -14,7 +14,7 @@ export const verifyToken = async(req: Request, _res: Response, next: NextFunctio
         //Verifico si existe el token
         const token = req.headers['auth-token'] as string
         if(!token){
-            throw boom.unauthorized('No se proporcio un token')
+            throw boom.unauthorized('No se proporciono un token')
         }
         //Verifico si el token es valido
         const decoded = jwt.verify(token, SECRET_JWT_TOKEN) as IToken

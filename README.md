@@ -20,7 +20,7 @@ Este sera un proyecto de prueba de un backend, Usaremos las siguientes tencologi
 
 ### Comandos basicos para comenzar
 
-#### Subir la imagen Docker
+#### Subir la imagen de MongoDB Docker
 
 `$ docker-compose up -d`
 #### Comando para Desarrollo
