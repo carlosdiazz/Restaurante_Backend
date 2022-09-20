@@ -23,7 +23,7 @@ export const getOneUser = async(req: Request, res: Response, next: NextFunction)
 
 export const getAlleUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const users = await userModel.find({password:0}).populate('role', 'name -_id')
+        const users = await userModel.find({attributes: {exclude: ['password']}}).populate('role', 'name -_id')
         if(!users){
             next(boom.notFound('No hay usuarios'))
         }

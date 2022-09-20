@@ -11,14 +11,17 @@ interface IToken {
 
 export const verifyToken = async(req: Request, _res: Response, next: NextFunction) => {
     try{
+        //Verifico si existe el token
         const token = req.headers['auth-token'] as string
         if(!token){
-            throw boom.unauthorized('No token provided')
+            throw boom.unauthorized('No se proporcio un token')
         }
+        //Verifico si el token es valido
         const decoded = jwt.verify(token, SECRET_JWT_TOKEN) as IToken
         if(!decoded){
             throw boom.unauthorized('Unauthorized')
         }
+        //Verifico si el usuario existe
         const user = await UserModel.findById(decoded.id, {password: 0})
         if(!user){
             throw boom.unauthorized('Unauthorized')
