@@ -27,6 +27,13 @@ export const createUserSchema = z.object({
     })
 })
 
+export const loginUserSchema = z.object({
+    body: z.object({
+        email: email,
+        password: password,
+    })
+})
+
 export const updateUserSchema = z.object({
     body: z.object({
         first_name: first_name.optional(),

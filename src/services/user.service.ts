@@ -9,11 +9,11 @@ import { createUserType } from '../schemas/user.schemas'
 export const getOneUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
-        const user = await userModel.findById(id).populate('role', 'name -_id')
+        const user = await userModel.findById(id, {password:0}).populate('role', 'name -_id')
         if(!user){
             throw boom.notFound('Usuario no encontrado')
         }
-        user.password = ''
+        //user.password = ''
         sucessResponse(req, res, user,'Usuario encontrado', 200)
 
     }catch(error){
@@ -23,7 +23,7 @@ export const getOneUser = async(req: Request, res: Response, next: NextFunction)
 
 export const getAlleUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const users = await userModel.find().populate('role', 'name -_id')
+        const users = await userModel.find({password:0}).populate('role', 'name -_id')
         if(!users){
             next(boom.notFound('No hay usuarios'))
         }

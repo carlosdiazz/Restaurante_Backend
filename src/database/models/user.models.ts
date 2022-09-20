@@ -11,10 +11,12 @@ class User {
     @prop({required: true})
     last_name: string
 
-    @prop({required: true, unique: true, minlength: 5})
+    //! COLOCAR unique: true
+    @prop({required: true, minlength: 5})
     nickname: string
 
-    @prop({required: true, unique: true})
+    //! COLOCAR unique: true
+    @prop({required: true})
     email: string
 
     @prop({required: true, minlength: 8})

@@ -4,13 +4,24 @@ import {connect} from './database/database'
 import {createRoles} from './libs/initialSetup'
 
 
-// Conecto a la base de datos
-connect()
+const main = async() => {
+    try{
+        console.log(`🔥🔥🔥🔥🔥Subiendo el servidor🔥🔥🔥🔥🔥`)
+        // Conecto a la base de datos
+        await connect()
 
-// Creo roles por defecto
-createRoles()
+        // Creo roles por defecto
+        await createRoles()
+
+        app.listen(PORT, ()=>{
+            console.log(`👍El server esta arriba en el puerto: ${PORT} 👍💪`)
+        })
 
 
-app.listen(PORT, ()=>{
-    console.log(`👍El server esta arriba en el puerto: ${PORT} 👍💪`)
-})
+    }catch (error) {
+        console.log(error)
+    }
+
+}
+
+main()

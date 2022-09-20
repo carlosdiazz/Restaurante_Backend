@@ -107,7 +107,7 @@ userRouters.get(
 )
 /**
 * @swagger
-* /api/v1/users/:id:
+* /api/v1/users/{id}:
 *   put:
 *     tags:
 *       - Users
@@ -132,7 +132,7 @@ userRouters.put(
 )
 /**
 * @swagger
-* /api/v1/users/:id:
+* /api/v1/users/{id}:
 *   delete:
 *     tags:
 *       - Users
