@@ -3,7 +3,7 @@ import boom from '@hapi/boom'
 import {SECRET_JWT_TOKEN} from '../config/config'
 import jwt from 'jsonwebtoken'
 import UserModel from '../database/models/user.models'
-
+import RoleModel from '../database/models/role.models'
 interface IToken {
     id: string
     iat: number
@@ -29,3 +29,21 @@ export const verifyToken = async(req: Request, _res: Response, next: NextFunctio
         next(error)
     }
 };
+
+export const isAdmin = async(req: Request, _res: Response, next : NextFunction) => {
+    try{
+        const user = await UserModel.findById(req.body.userId, {password: 0});
+        const roles = await RoleModel.find({_id: {$in: user?.role}});
+
+        for(let i = 0; i < roles.length; i++){
+            if(roles[i].name === 'admin'){
+                next();
+                return;
+            }
+        }
+        throw boom.unauthorized('No tiene el Rol de Administrador');
+
+    }catch(err){
+        next(err);
+    }
+}

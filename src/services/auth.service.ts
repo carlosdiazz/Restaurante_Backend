@@ -32,8 +32,9 @@ export const signup = async(
 
         //! VERIFICAR SI EL ROL QUE SE ESTA ASIGNANDO EXISTE
         if(role){
-            const foundRoles = await RoleModel.find({name: {$in: role}});
-            newUser.role = foundRoles.map(role => role._id);
+            //! ARREGLAR ESTO
+            const foundRoles = await RoleModel.findById(role[0]) as string;
+            newUser.role = [foundRoles];
         }else{
             const role = await RoleModel.findOne({name: 'user'});
             newUser.role = [role?._id];

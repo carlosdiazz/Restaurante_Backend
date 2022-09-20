@@ -2,7 +2,7 @@ import {Router} from 'express'
 import * as productService from '../services/product.service'
 import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema} from '../schemas/product.schemas'
 import {schemaValidation} from '../libs/validarSchemas'
-import {verifyToken} from '../libs/verifyToken'
+import {isAdmin, verifyToken} from '../libs/verifyToken'
 
 const productRouters = Router()
 
@@ -154,7 +154,7 @@ productRouters.delete(
 productRouters.post(
     '/',
     verifyToken,
-    //! AGREGAR VALIDACION DE PERMISOS
+    isAdmin,
     schemaValidation(createProductSchema),
     productService.createProduct
 )
