@@ -9,9 +9,7 @@ const AuthRouters = Router()
 //Register
 AuthRouters.post(
     '/signup',
-    //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
-    //! schemaValidation(createProductSchema),
     schemaValidation(createUserSchema),
     signup
     //productService.createProduct
@@ -20,9 +18,7 @@ AuthRouters.post(
 //Login
 AuthRouters.post(
     '/signin',
-    //!AGREGAR VALIDACION DE TOKEN
     //! AGREGAR VALIDACION DE PERMISOS
-    //! schemaValidation(createProductSchema),
     schemaValidation(loginUserSchema),
     signin
     //productService.createProduct
@@ -30,9 +26,6 @@ AuthRouters.post(
 
 AuthRouters.get(
     '/profile',
-    //!AGREGAR VALIDACION DE TOKEN
-    //! AGREGAR VALIDACION DE PERMISOS
-    //! schemaValidation(createProductSchema),
     verifyToken,
     profile
     //productService.createProduct

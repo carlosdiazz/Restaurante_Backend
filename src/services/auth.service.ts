@@ -65,11 +65,11 @@ export const signin = async(
         const {email, password} = req.body;
         const user = await userModel.findOne({email: email}).populate('role', 'name -_id')
         if(!user){
-            throw boom.unauthorized('Usuario o contraseña incorrectos 1')
+            throw boom.unauthorized('Usuario o contraseña incorrectos')
         }
         const matchPassword = await comparePassword(password, user.password)
         if(!matchPassword){
-            throw boom.unauthorized('Usuario o contraseña incorrectos 2')
+            throw boom.unauthorized('Usuario o contraseña incorrectos')
         }
         const token = jwt.sign({id: user._id}, SECRET_JWT_TOKEN)
         //sucessResponse(req, res, {token, user}, 'Usuario logeado', 200)
