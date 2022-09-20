@@ -1,7 +1,7 @@
 _id: req_68fba9878ee045788602a99b9e236230
 type: Request
 parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1663472815266
+modified: 1663710106709
 created: 1663472716304
 url: "{{ _.URL }}/api/v1/products"
 name: getAllProduct
@@ -9,8 +9,14 @@ description: ""
 method: GET
 body: {}
 parameters: []
-headers: []
-authentication: {}
+headers:
+  - id: pair_e3d5f1c5c4ee4f0280553e25e23938e3
+    name: ""
+    value: ""
+    description: ""
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmEyNjQ4Yzg0MjdmNDBkZTYzY2I5ZiIsImlhdCI6MTY2MzcwNjY5Nn0.4NARhPgdX892Yim8k5Jg5ahW8gwT6yErjVL3CdPSLJEss
 metaSortKey: -1663472716304
 isPrivate: false
 settingStoreCookies: true

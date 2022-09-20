@@ -1,7 +1,7 @@
 _id: req_98b2113221fa4bea903bc9523428dfa6
 type: Request
 parentId: fld_608ba97a394c450aa136a7e314844707
-modified: 1663649316925
+modified: 1663709765961
 created: 1663642963151
 url: "{{ _.URL }}/api/v1/auth/signin"
 name: Signin
@@ -11,7 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"email":"carlos@hotmail.com",
+    	"email":"carldos@hotmail.com",
     	"password":"1111111111"
     }
 parameters: []
@@ -19,6 +19,10 @@ headers:
   - name: Content-Type
     value: application/json
     id: pair_ec5fae42966c422e8fdb71b95f70f4a5
+  - id: pair_3190dc3d9a08443ca145c68d169543f2
+    name: auth-token
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmEyNWYzYzg0MjdmNDBkZTYzY2I5NCIsImlhdCI6MTY2MzcwNjYxMX0.V4D1FwNEXPtUshra9dWV-VdvngUItD6qwKVO2XCJZ_Q
+    description: ""
 authentication: {}
 metaSortKey: -1663642963151
 isPrivate: false

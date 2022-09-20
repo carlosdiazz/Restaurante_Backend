@@ -1,7 +1,7 @@
 _id: req_4813e1e953844f9e92a57670d414463e
 type: Request
 parentId: fld_608ba97a394c450aa136a7e314844707
-modified: 1663650801964
+modified: 1663709767704
 created: 1663642903498
 url: "{{ _.URL }}/api/v1/auth/signup"
 name: Signup
@@ -13,10 +13,11 @@ body:
     {
     	"first_name":"carlos",
     	"last_name":"diaz",
-    	"nickname":"carlosd12",
+    	"nickname":"carlos",
     	"email":"carlos@hotmail.com",
     	"birth_date":"10-10-2010",
-    	"password":"1111111111"
+    	"password":"1111111111",
+    	"role":["632a21e80b8294a78d75fd66"]
     }
 parameters: []
 headers:

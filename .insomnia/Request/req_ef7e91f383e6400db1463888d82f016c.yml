@@ -1,7 +1,7 @@
 _id: req_ef7e91f383e6400db1463888d82f016c
 type: Request
 parentId: fld_608ba97a394c450aa136a7e314844707
-modified: 1663650816750
+modified: 1663685148037
 created: 1663642977670
 url: "{{ _.URL }}/api/v1/auth/profile"
 name: Profile
@@ -9,11 +9,7 @@ description: ""
 method: GET
 body: {}
 parameters: []
-headers:
-  - id: pair_3a71c91c15234ca0a82015550ff40ae3
-    name: auth-token
-    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMjk0YmY1NTVhMDg2MzczNDJhZmViMSIsImlhdCI6MTY2MzY1MDgwNX0.HHrqPqUOq54nZPY1il0XN0qEG8k6EIcuLDYCcBR521E
-    description: ""
+headers: []
 authentication:
   type: bearer
 metaSortKey: -1663642977670
