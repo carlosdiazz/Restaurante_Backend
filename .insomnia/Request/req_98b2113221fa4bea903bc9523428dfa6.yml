@@ -1,7 +1,7 @@
 _id: req_98b2113221fa4bea903bc9523428dfa6
 type: Request
 parentId: fld_608ba97a394c450aa136a7e314844707
-modified: 1663709765961
+modified: 1663738044415
 created: 1663642963151
 url: "{{ _.URL }}/api/v1/auth/signin"
 name: Signin
@@ -11,7 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"email":"carldos@hotmail.com",
+    	"email":"carlos@hotmail.com",
     	"password":"1111111111"
     }
 parameters: []

@@ -1,17 +1,22 @@
 _id: req_ef7e91f383e6400db1463888d82f016c
 type: Request
 parentId: fld_608ba97a394c450aa136a7e314844707
-modified: 1663685148037
+modified: 1663728639959
 created: 1663642977670
-url: "{{ _.URL }}/api/v1/auth/profile"
+url: "{{ _.URL }}/api/v1/auth/me"
 name: Profile
 description: ""
 method: GET
 body: {}
 parameters: []
-headers: []
+headers:
+  - id: pair_888b4c2f7e5e4ac1aa8a3dd249ccff62
+    name: ""
+    value: ""
+    description: ""
 authentication:
   type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmE0YjBlY2RjMmQxNGM4YmJjYzViMCIsImlhdCI6MTY2MzcyODI1Mn0.MnM2hATiKcJJIkNUTvbI1qtcDvN59zPZWAy3UTnXPHQ
 metaSortKey: -1663642977670
 isPrivate: false
 settingStoreCookies: true
