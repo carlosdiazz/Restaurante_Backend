@@ -1,7 +1,7 @@
 _id: req_4813e1e953844f9e92a57670d414463e
 type: Request
 parentId: fld_608ba97a394c450aa136a7e314844707
-modified: 1663738661276
+modified: 1663775383315
 created: 1663642903498
 url: "{{ _.URL }}/api/v1/auth/signup"
 name: Signup
@@ -11,15 +11,14 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"first_name":"carlos",
-    	"last_name":"diaz",
-    	"nickname":"admin",
-    	"email":"admin@hotmail.com",
+    	"first_name":"carlo2s",
+    	"last_name":"Diaz2",
+    	"nickname":"carlos2",
+    	"email":"carlos2@hotmail.com",
     	"birth_date":"10-10-2010",
     	"password":"12345678",
-    	"is_staff":true,
-    	"role":["632a4a5fcdc2d14c8bbcc5a0"],
-    	"phone":809
+    	"is_staff":false,
+    	"role":["632a4a5fcdc2d14c8bbcc5a0"]
     	
     }
 parameters: []

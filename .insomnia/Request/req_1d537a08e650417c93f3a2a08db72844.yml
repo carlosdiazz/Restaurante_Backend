@@ -1,0 +1,36 @@
+_id: req_1d537a08e650417c93f3a2a08db72844
+type: Request
+parentId: fld_6e21508008874107b75af8703304d1e5
+modified: 1663796048243
+created: 1663795002579
+url: "{{ _.URL }}/api/v1/categories"
+name: createCategories
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name":"Producto 9",
+    	"description":"DESCCC",
+    	"price":344,
+    	"imgUrl":"http://logo.com"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_8891c2f0446f444781754e7c5e28079c
+  - id: pair_5e2ccec0e1004e4b9a71080e28ae48f9
+    name: auth-token
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmEyNjQ4Yzg0MjdmNDBkZTYzY2I5ZiIsImlhdCI6MTY2MzcwNjY5Nn0.4NARhPgdX892Yim8k5Jg5ahW8gwT6yErjVL3CdPSLJE
+    description: ""
+authentication: {}
+metaSortKey: -1663472714803
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

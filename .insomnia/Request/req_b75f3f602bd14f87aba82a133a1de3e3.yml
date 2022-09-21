@@ -1,17 +1,17 @@
-_id: req_3544c1c4b64b46b5a0c12a4af4818967
+_id: req_b75f3f602bd14f87aba82a133a1de3e3
 type: Request
-parentId: fld_bb058c18bfa641cbaaa011059085f862
-modified: 1663767074845
-created: 1663455401421
-url: "{{ _.URL }}/api/v1/users/632a25f3c8427f40de63cb94"
-name: deleteUser
+parentId: fld_6e21508008874107b75af8703304d1e5
+modified: 1663796496162
+created: 1663795002597
+url: "{{ _.URL }}/api/v1/categories/632b8340f0f8865a9a0138f5"
+name: getOneCategorie
 description: ""
-method: DELETE
+method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1663430409359.6875
+metaSortKey: -1663472717242
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

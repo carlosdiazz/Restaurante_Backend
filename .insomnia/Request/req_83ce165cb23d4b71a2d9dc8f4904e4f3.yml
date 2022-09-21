@@ -1,27 +1,26 @@
-_id: req_7ca3e7932df6456d82a7fb90fb5ab121
+_id: req_83ce165cb23d4b71a2d9dc8f4904e4f3
 type: Request
-parentId: fld_bb058c18bfa641cbaaa011059085f862
-modified: 1663767046010
-created: 1663455385129
-url: "{{ _.URL }}/api/v1/users/632a2648c8427f40de63cb9f"
-name: updateUser
+parentId: fld_6e21508008874107b75af8703304d1e5
+modified: 1663796511576
+created: 1663795002576
+url: "{{ _.URL }}/api/v1/categories/632b8340f0f8865a9a0138f5"
+name: UpdateCategories
 description: ""
 method: PUT
 body:
   mimeType: application/json
   text: |-
     {
-    	"first_name":"Carlos",
-    	"nickname":"carlos",
-    	"email":"carlos@mail.com"
+    	"name":"Categoria",
+    	"price":34
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_aa94fd8cad544c2ebc641afd0485bf8e
+    id: pair_7d64907a0a74486db2c2ef6c1c20b9cc
 authentication: {}
-metaSortKey: -1663432066359.375
+metaSortKey: -1663472713916
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

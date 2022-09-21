@@ -1,0 +1,27 @@
+_id: req_46a265d3f7c34ad5b40359a89a12c90a
+type: Request
+parentId: fld_6e21508008874107b75af8703304d1e5
+modified: 1663795128335
+created: 1663795002586
+url: "{{ _.URL }}/api/v1/categories"
+name: getAllCategories
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - id: pair_e3d5f1c5c4ee4f0280553e25e23938e3
+    name: ""
+    value: ""
+    description: ""
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmEyNjQ4Yzg0MjdmNDBkZTYzY2I5ZiIsImlhdCI6MTY2MzcwNjY5Nn0.4NARhPgdX892Yim8k5Jg5ahW8gwT6yErjVL3CdPSLJEss
+metaSortKey: -1663472716304
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
