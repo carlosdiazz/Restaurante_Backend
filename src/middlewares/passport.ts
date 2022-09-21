@@ -19,7 +19,6 @@ export default new Strategy(opts, async(payload, done) => {
         }
         return done(null, false)
     }catch(error){
-        console.log(error)
         done(error, false)
     }
 }

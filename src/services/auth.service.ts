@@ -82,7 +82,7 @@ export const signin = async(
 
 export const profile = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        sucessResponse(req, res, req.body,'profile 2', 200)
+        sucessResponse(req, res, req.user,'Auth/me', 200)
 
     }catch(error){
         next(error)
