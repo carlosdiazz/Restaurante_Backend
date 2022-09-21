@@ -93,6 +93,7 @@ export const updateUser = async(req: Request, res: Response, next: NextFunction)
             throw boom.notFound('Usuario no encontrado')
         }
 
+        //! Arreglar el cambio de contrasena
         const userUpdated2 = await userModel.findByIdAndUpdate(id, {
             first_name: first_name,
             last_name: last_name,
