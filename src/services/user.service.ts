@@ -40,8 +40,8 @@ export const createUser = async(
     res: Response,
     next: NextFunction)=>{
     try{
-        const {first_name, last_name, nickname, email, password, birth_date, role} = req.body;
-
+        const {first_name, last_name, nickname, email, password, birth_date, role, is_staff, phone} = req.body;
+        console.log(is_staff)
         const passwordEncrypted = await encryptPasswoird(password)
 
         const newUser = new userModel({
@@ -51,7 +51,9 @@ export const createUser = async(
             email: email,
             password: passwordEncrypted,
             birth_date: birth_date,
-            role: role
+            role: role,
+            is_staff: is_staff,
+            phone: phone
         })
         const userSaved = await (await newUser.save()).populate('role', 'name -_id')
         if(!userSaved){

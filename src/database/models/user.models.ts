@@ -25,13 +25,14 @@ class User {
     @prop({required: true})
     birth_date: Date
 
-    @prop({default: ''})
+    @prop({required: true})
     phone: number
 
     @prop({default: true})
     is_active: boolean
 
-    @prop({default: false})
+    //!Arregalr esto de staff
+    @prop({required: true})
     is_staff: boolean
 
     @prop({ref: () => Role})

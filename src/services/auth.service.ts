@@ -16,7 +16,7 @@ export const signup = async(
     res: Response,
     next: NextFunction)=>{
     try{
-        const {first_name, last_name, nickname, email, password, birth_date, role} = req.body;
+        const {first_name, last_name, nickname, email, password, birth_date, role, is_staff, phone} = req.body;
 
         const passwordEncrypted = await encryptPasswoird(password)
 
@@ -27,7 +27,9 @@ export const signup = async(
             email: email,
             password: passwordEncrypted,
             birth_date: birth_date,
-            role: role
+            role: role,
+            is_staff: is_staff,
+            phone: phone
         })
 
         //! VERIFICAR SI EL ROL QUE SE ESTA ASIGNANDO EXISTE
