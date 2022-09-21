@@ -1,10 +1,7 @@
 // Aqui pasaremos los middlewares que voy a usar para controlar los errorres
 import { Request, Response, NextFunction } from 'express';
-
-export const logErrors = (err,_req: Request,_res: Response,next: NextFunction) => {
-    //console.log(err);
-    next(err);
-  }
+import {} from '@typegoose/typegoose'
+import { MongooseError } from 'mongoose';
 
 export const boomErrorHandler = (err, _req: Request, res: Response, next: NextFunction) => {
 
@@ -21,8 +18,41 @@ export const boomErrorHandler = (err, _req: Request, res: Response, next: NextFu
     }
 }
 
+export const mongoErrorHandler = (err:MongooseError, _req: Request, res: Response, next: NextFunction) => {
+    if(err.name==='MongoServerError' ){
+        res.status(409).json({
+            data:err.name,
+            message: err.message,
+            statusCode: 409,
+            error: true,
+
+        })
+    }else{
+        next(err);
+    }
+}
+
+export const jsonErrorHandler = (err, _req: Request, res: Response, next: NextFunction) => {
+    if(err.message.startsWith('Unexpected token')){
+        res.status(400).json({
+            data:err.name,
+            message: err.message,
+            statusCode: 409,
+            error: true,
+
+        })
+    }else{
+        next(err);
+    }
+}
+
+export const logErrors = (err,_req: Request,_res: Response,next: NextFunction) => {
+    console.log(err.message);
+    next(err);
+  }
+
+
 export const errorHandler = (err, _req: Request, res: Response, _next: NextFunction) => {
-    //!Tengo que validar los errores de mongose
     res.status(500).json({
             data: {},
             message: err.message,

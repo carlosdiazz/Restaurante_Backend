@@ -12,7 +12,7 @@ class User {
     last_name: string
 
     //! COLOCAR unique: true
-    @prop({required: true, minlength: 5, unique: true, trim: true})
+    @prop({required: true, minlength: 5, unique: true, trim: true, })
     nickname: string
 
     //! COLOCAR unique: true
@@ -25,7 +25,7 @@ class User {
     @prop({required: true})
     birth_date: Date
 
-    @prop({required: true})
+    @prop({})
     phone: number
 
     @prop({default: true})

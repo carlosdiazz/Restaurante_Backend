@@ -2,7 +2,7 @@ import express from 'express'
 import routerAPI from '../routes/index.routes'
 import cors from 'cors'
 import morgan from 'morgan'
-import {logErrors, boomErrorHandler, errorHandler} from '../middlewares/error.middlewares'
+import {logErrors, boomErrorHandler, errorHandler, mongoErrorHandler, jsonErrorHandler} from '../middlewares/error.middlewares'
 import {ENV} from '../config/config'
 import swaggerJsDoc from 'swagger-jsdoc'
 import swaggerUI from 'swagger-ui-express'
@@ -39,8 +39,10 @@ routerAPI(app)
 
 
 ///Middlewares de error
-app.use(logErrors);
 app.use(boomErrorHandler);
+app.use(mongoErrorHandler);
+app.use(jsonErrorHandler)
+app.use(logErrors);
 app.use(errorHandler);
 
 
