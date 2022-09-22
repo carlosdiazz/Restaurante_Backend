@@ -83,7 +83,7 @@ export const updateCategorie = async(req: Request, res: Response, next: NextFunc
             name: name,
             description: description,
             price: price,
-            image: imgUrl
+            imgUrl: imgUrl
         },{new: true})
         if(!categorieUdated2){
             throw boom.badRequest('Error al actualizar la Categoria')

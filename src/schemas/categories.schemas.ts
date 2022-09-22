@@ -9,7 +9,7 @@ export const createCategoriesSchema = z.object({
     body: z.object({
         name: name,
         description: description.optional(),
-        imgUrl: imgUrl
+        imgUrl: imgUrl.optional()
     })
 })
 
