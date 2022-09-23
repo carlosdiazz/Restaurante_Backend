@@ -2,6 +2,7 @@ import {sucessResponse} from '../libs/succesResponse'
 import boom from '@hapi/boom'
 import ProductModel from '../database/models/product.models'
 import {Request,Response, NextFunction} from 'express'
+import {comprobarCategory} from '../libs/ValidarExistenciaClaveSecundaria'
 
 
 export const getOneProduct = async(req: Request, res: Response, next: NextFunction)=>{
@@ -19,7 +20,7 @@ export const getOneProduct = async(req: Request, res: Response, next: NextFuncti
 
 export const getAllProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const products = await ProductModel.find()
+        const products = await ProductModel.find().populate('id_category', 'name -_id')
         if(!products){
             throw boom.notFound('No hay productos')
         }
@@ -31,13 +32,9 @@ export const getAllProduct = async(req: Request, res: Response, next: NextFuncti
 
 export const createProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const {name, description, price, image} = req.body;
-        const newProduct = new ProductModel({
-            name: name,
-            description: description,
-            price: price,
-            image: image
-        })
+        await comprobarCategory(req.body.id_category)
+        const product = req.body;
+        const newProduct = new ProductModel(product)
         const productSaved = await newProduct.save()
         if(!productSaved){
             throw boom.badRequest('Error al crear el producto')

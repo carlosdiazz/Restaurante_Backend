@@ -3,7 +3,7 @@ import * as productService from '../services/product.service'
 import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema} from '../schemas/product.schemas'
 import {schemaValidation} from '../libs/validarSchemas'
 import {isAdmin, verifyToken} from '../libs/verifyToken'
-import passport from 'passport'
+//import passport from 'passport'
 
 const productRouters = Router()
 
@@ -59,7 +59,7 @@ const productRouters = Router()
 */
 productRouters.get(
     '/',
-    passport.authenticate('jwt', {session: false}),
+    //!passport.authenticate('jwt', {session: false}),
     productService.getAllProduct
 )
 /**

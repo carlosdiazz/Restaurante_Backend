@@ -19,7 +19,7 @@ export const boomErrorHandler = (err, _req: Request, res: Response, next: NextFu
 }
 
 export const mongoErrorHandler = (err:MongooseError, _req: Request, res: Response, next: NextFunction) => {
-    if(err.name==='MongoServerError' ){
+    if(err.name==='MongoServerError' || err.name === 'ValidationError' ){
         res.status(409).json({
             data:err.name,
             message: err.message,
@@ -47,6 +47,7 @@ export const jsonErrorHandler = (err, _req: Request, res: Response, next: NextFu
 }
 
 export const logErrors = (err,_req: Request,_res: Response,next: NextFunction) => {
+
     console.log(err.message);
     next(err);
   }

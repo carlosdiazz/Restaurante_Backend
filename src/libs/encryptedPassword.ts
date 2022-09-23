@@ -8,3 +8,5 @@ export const encryptPasswoird = async(password: string) =>{
 export const comparePassword = async(password: string, receivedPassword: string) =>{
     return await bcrypt.compare(password, receivedPassword)
 }
+
+//! Crtear una funcion pa validar 
