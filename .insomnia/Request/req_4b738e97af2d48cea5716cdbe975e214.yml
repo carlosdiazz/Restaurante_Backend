@@ -1,7 +1,7 @@
 _id: req_4b738e97af2d48cea5716cdbe975e214
 type: Request
 parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1663710564359
+modified: 1663900491678
 created: 1663472714803
 url: "{{ _.URL }}/api/v1/products"
 name: createProduct
@@ -11,10 +11,14 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"name":"Producto 9",
+    	"name":"Producto OTRO",
     	"description":"DESCCC",
     	"price":344,
-    	"imgUrl":"http://logo.com"
+    	"img_url":"http://logo.com",
+    	"stock":34,
+    	"is_active":true,
+    	"id_category":"632cc282e929823cccb835e2",
+    	"otro_campo":"Otro campo"
     }
 parameters: []
 headers:
@@ -23,9 +27,11 @@ headers:
     id: pair_8891c2f0446f444781754e7c5e28079c
   - id: pair_5e2ccec0e1004e4b9a71080e28ae48f9
     name: auth-token
-    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmEyNjQ4Yzg0MjdmNDBkZTYzY2I5ZiIsImlhdCI6MTY2MzcwNjY5Nn0.4NARhPgdX892Yim8k5Jg5ahW8gwT6yErjVL3CdPSLJE
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmNjMjgyZTkyOTgyM2NjY2I4MzVlMiIsImlhdCI6MTY2Mzg3Nzc2Mn0.CArbENc4-K8UhbdubWfHQhqaF6IS-Kn5ziQBX94zk7g
     description: ""
-authentication: {}
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmNjMjgyZTkyOTgyM2NjY2I4MzVlMiIsImlhdCI6MTY2Mzg3Nzc2Mn0.CArbENc4-K8UhbdubWfHQhqaF6IS-Kn5ziQBX94zk7g
 metaSortKey: -1663472714803
 isPrivate: false
 settingStoreCookies: true
