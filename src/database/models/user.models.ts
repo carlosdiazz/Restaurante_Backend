@@ -35,7 +35,7 @@ class User {
     @prop({required: true})
     is_staff: boolean
 
-    @prop({ref: () => Role})
+    @prop({required: true, ref: () => Role})
     role: Ref<Role>[] //Relacion de muchos a muchos
 
     static async findByNickname(this: ReturnModelType<typeof User>, nickname: string){

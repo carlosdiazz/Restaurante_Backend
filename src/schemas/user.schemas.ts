@@ -9,7 +9,7 @@ const birth_date = z.string()
 const phone = z.number().default(0)
 const is_active = z.boolean().default(true)
 const is_staff = z.boolean().default(false)
-const role = z.array(z.string())
+const role = z.array(z.string()).min(1)
 const id= z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 
 export const createUserSchema = z.object({
@@ -23,7 +23,7 @@ export const createUserSchema = z.object({
         phone: phone.optional(),
         is_active: is_active,
         is_staff: is_staff,
-        role: role.optional()
+        role: role
     })
 })
 

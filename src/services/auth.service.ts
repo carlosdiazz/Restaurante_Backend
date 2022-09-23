@@ -5,9 +5,9 @@ import {Request,Response, NextFunction} from 'express'
 import jwt from 'jsonwebtoken'
 import {SECRET_JWT_TOKEN} from '../config/config'
 import userModel from '../database/models/user.models'
-import RoleModel from '../database/models/role.models'
+//import RoleModel from '../database/models/role.models'
 import { createUserType } from '../schemas/user.schemas'
-
+import {comprobarRol} from '../libs/ValidarExistenciaClaveSecundaria'
 
 
 //Register
@@ -17,7 +17,7 @@ export const signup = async(
     next: NextFunction)=>{
     try{
         const {first_name, last_name, nickname, email, password, birth_date, role, is_staff, phone} = req.body;
-
+        await comprobarRol(role)
         const passwordEncrypted = await encryptPasswoird(password)
 
         const newUser = new userModel({
@@ -32,24 +32,14 @@ export const signup = async(
             phone: phone
         })
 
-        //! VERIFICAR SI EL ROL QUE SE ESTA ASIGNANDO EXISTE
-        if(role){
-            //! ARREGLAR ESTO
-            const foundRoles = await RoleModel.findById(role[0]) as string;
-            newUser.role = [foundRoles];
-        }else{
-            const role = await RoleModel.findOne({name: 'user'});
-            newUser.role = [role?._id];
-        }
-
         const token = jwt.sign({id: newUser._id}, SECRET_JWT_TOKEN)
 
         const user = await (await newUser.save()).populate('role', 'name -_id')
         if(!user){
             throw boom.badRequest('Error al crear el usuario')
         }
-        newUser.password = ''
-        sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'auth-token':token}, 200)
+        //!sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'auth-token':token}, 200)
+        sucessResponseHeader(req, res, {token}, 'Usuario logeado',{'auth-token':token}, 200)
 
     }catch(error){
         next(error)

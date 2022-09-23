@@ -41,7 +41,6 @@ export const createUser = async(
     next: NextFunction)=>{
     try{
         const {first_name, last_name, nickname, email, password, birth_date, role, is_staff, phone} = req.body;
-        console.log(is_staff)
         const passwordEncrypted = await encryptPasswoird(password)
 
         const newUser = new userModel({
