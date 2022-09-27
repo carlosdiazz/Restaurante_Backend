@@ -14,8 +14,7 @@ services:
     ports:
       - 27017:27017
 
-    #networks:
-    #  - mi-mongo
+
 
   mongo-express:
     image: mongo-express
