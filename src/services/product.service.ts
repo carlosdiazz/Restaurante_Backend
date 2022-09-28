@@ -20,15 +20,22 @@ export const getOneProduct = async(req: Request, res: Response, next: NextFuncti
 
 export const getAllProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-
-        const category = req.query.category
-        const is_active = req.query.active || true
-        let products;
-        if(category){
-            products = await ProductModel.find({'id_category':category, 'is_active':is_active}).populate('id_category', 'name -_id')
-        }else{
-            products = await ProductModel.find().populate('id_category', 'name -_id')
+        let filter = {};
+        if(req.query.category){
+            filter['id_category'] = req.query.category
         }
+        if (req.query.active){
+            filter['is_active'] = req.query.active
+        }
+        //const category = req.query.category || null
+        //const is_active = req.query.active || null
+        //console.log(is_active)
+        //let products;
+        //if(category || is_active){
+        //    products = await ProductModel.find({'id_category':category, 'is_active':is_active}).populate('id_category', 'name -_id')
+        //}else{
+        const products = await ProductModel.find(filter).populate('id_category', 'name description _id')
+        //}
         if(!products){
             throw boom.notFound('No hay productos')
         }
@@ -73,7 +80,7 @@ export const deleteProduct = async(req: Request, res: Response, next: NextFuncti
 export const updateProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
-        const {name, description, price, image} = req.body;
+        const {name, description, price, image, is_active, img_url} = req.body;
         const productUdated = await ProductModel.findById(id)
         if(!productUdated){
             throw boom.notFound('Producto no encontrado')
@@ -82,7 +89,9 @@ export const updateProduct = async(req: Request, res: Response, next: NextFuncti
             name: name,
             description: description,
             price: price,
-            image: image
+            image: image,
+            is_active: is_active,
+            img_url: img_url
         },{new: true})
         if(!productUdated2){
             throw boom.badRequest('Error al actualizar el producto')

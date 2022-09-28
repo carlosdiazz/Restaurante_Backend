@@ -38,8 +38,8 @@ export const signup = async(
         if(!user){
             throw boom.badRequest('Error al crear el usuario')
         }
-        //!sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'auth-token':token}, 200)
-        sucessResponseHeader(req, res, {token}, 'Usuario logeado',{'auth-token':token}, 200)
+        //!sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'Token':token}, 200)
+        sucessResponseHeader(req, res, {token}, 'Usuario logeado',{'Token':token}, 200)
 
     }catch(error){
         next(error)
@@ -65,7 +65,7 @@ export const signin = async(
         }
         const token = jwt.sign({id: user._id}, SECRET_JWT_TOKEN)
         //sucessResponse(req, res, {token, user}, 'Usuario logeado', 200)
-        sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'auth-token':token}, 200)
+        sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'Token':token}, 200)
 
     }catch(error){
         next(error)

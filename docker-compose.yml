@@ -3,7 +3,7 @@ version: '3.5'
 services:
   mongo:
     image: mongo
-    container_name: mongo
+    container_name: mongo_restaurante
     restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root

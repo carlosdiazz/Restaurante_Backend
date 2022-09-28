@@ -85,7 +85,7 @@ export const updateUser = async(req: Request, res: Response, next: NextFunction)
     try{
         const {id} = req.params
         //! No se puede actualizar la contraseña
-        const {first_name, last_name, nickname, email} = req.body
+        const {first_name, last_name, nickname, email, is_staff, is_active} = req.body
 
         const userUpdated = await userModel.findById(id)
         if(!userUpdated){
@@ -98,6 +98,8 @@ export const updateUser = async(req: Request, res: Response, next: NextFunction)
             last_name: last_name,
             nickname: nickname,
             email: email,
+            is_staff: is_staff,
+            is_active: is_active,
             //password: password,
         }, {new: true})
         if(!userUpdated){

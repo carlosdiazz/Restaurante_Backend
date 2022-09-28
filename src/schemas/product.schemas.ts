@@ -27,7 +27,8 @@ export const updateProductSchema = z.object({
         description: description.optional(),
         price: price.optional(),
         stock: stock.optional(),
-        img_url: img_url.optional()
+        img_url: img_url.optional(),
+        is_active: is_active.optional(),
     }),
 })
 

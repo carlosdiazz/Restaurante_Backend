@@ -3,7 +3,6 @@ import {PORT} from './config/config'
 import {connect} from './database/database'
 import {createRoles} from './libs/initialSetup'
 
-
 const main = async() => {
     try{
         console.log(`🔥🔥🔥🔥🔥Subiendo el servidor🔥🔥🔥🔥🔥`)
@@ -17,11 +16,9 @@ const main = async() => {
             console.log(`👍El server esta arriba en el puerto: ${PORT} 👍💪`)
         })
 
-
     }catch (error) {
         console.log(error)
     }
-
 }
 
 main()

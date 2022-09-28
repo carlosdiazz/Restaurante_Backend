@@ -43,7 +43,7 @@ export const updateUserSchema = z.object({
         birth_date: birth_date.optional(),
         phone: phone.optional(),
         is_active: is_active.optional(),
-        is_staff: is_staff.optional()
+        is_staff: is_staff.optional(),
     }),
     params: z.object({
         id: id
