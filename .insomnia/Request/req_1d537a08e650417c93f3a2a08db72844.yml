@@ -1,7 +1,7 @@
 _id: req_1d537a08e650417c93f3a2a08db72844
 type: Request
 parentId: fld_6e21508008874107b75af8703304d1e5
-modified: 1663896083177
+modified: 1664372103098
 created: 1663795002579
 url: "{{ _.URL }}/api/v1/categories"
 name: createCategories
@@ -9,12 +9,11 @@ description: ""
 method: POST
 body:
   mimeType: application/json
-  text: |-
+  text: >-
     {
-    	"name":"Categoria 2",
-    	"description":"Catgeoria 2 Des",
-    	"price":344,
-    	"imgUrl":"http://logo.com"
+    	"name":"Pizzas",
+    	"description":"Las mejores pizzas",
+    	"imgUrl":"https://www.saborusa.com/wp-content/uploads/2019/12/origen-de-la-pizza-1.jpg"
     }
 parameters: []
 headers:

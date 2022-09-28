@@ -1,25 +1,25 @@
-_id: req_7ca3e7932df6456d82a7fb90fb5ab121
+_id: req_64dfa3b3cb8e4155839a0172567ca00b
 type: Request
-parentId: fld_bb058c18bfa641cbaaa011059085f862
-modified: 1664396686766
-created: 1663455385129
-url: "{{ _.URL }}/api/v1/users/63344ae562b2098fb6a9cbb2"
-name: updateUser
+parentId: fld_de16909af8694369b8d3b3651048d02b
+modified: 1664403165004
+created: 1664403131500
+url: "{{ _.URL }}/api/v1/tables"
+name: createTable
 description: ""
-method: PUT
+method: POST
 body:
   mimeType: application/json
   text: |-
     {
-    	"is_staff":true
+    	"name":"Mesa 1",
+    	"number":34
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
-    id: pair_aa94fd8cad544c2ebc641afd0485bf8e
 authentication: {}
-metaSortKey: -1663432066359.375
+metaSortKey: -1664403131500
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

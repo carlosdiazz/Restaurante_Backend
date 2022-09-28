@@ -1,17 +1,17 @@
-_id: req_262d7d95185747d98111abfe0eddd74d
+_id: req_58fbad5c5f044ad797ffe4a223ed0c8d
 type: Request
-parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1664393279886
-created: 1663472711945
-url: "{{ _.URL }}/api/v1/products/63349afc8e0c65a14768c4f3"
-name: deleteProdcut
+parentId: fld_de16909af8694369b8d3b3651048d02b
+modified: 1664403190541
+created: 1664403172406
+url: "{{ _.URL }}/api/v1/tables/6334b96799e29cdf4e2f67a1"
+name: updateTable
 description: ""
-method: DELETE
+method: PUT
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1663472711945
+metaSortKey: -1664403172406
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
