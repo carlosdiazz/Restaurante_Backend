@@ -2,7 +2,7 @@ import {Router} from 'express'
 import * as productService from '../services/product.service'
 import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema} from '../schemas/product.schemas'
 import {schemaValidation} from '../libs/validarSchemas'
-import {isAdmin, verifyToken} from '../libs/verifyToken'
+//import {isAdmin, verifyToken} from '../libs/verifyToken'
 //import passport from 'passport'
 
 const productRouters = Router()
@@ -51,12 +51,14 @@ const productRouters = Router()
 *      200:
 *       description: "Lista de Productos con exito"
 *       content:
-*        application/json:
+*        application/json: 
 *         schema:
 *           type: array
 *           items:
 *               $ref: '#/components/schemas/Product'
 */
+
+// /api/v1/products?category=6333b175c6aae4c92ff0a935&active=false
 productRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),
@@ -105,7 +107,7 @@ productRouters.get(
 */
 productRouters.put(
     '/:id',
-    verifyToken,
+    //verifyToken,
     //! AGREGAR VALIDACION DE PERMISOS
     schemaValidation(updateProductSchema),
     productService.updateProduct
@@ -130,7 +132,7 @@ productRouters.put(
 */
 productRouters.delete(
     '/:id',
-    verifyToken,
+    //verifyToken,
     //! AGREGAR VALIDACION DE PERMISOS
     schemaValidation(deleteProductSchema),
     productService.deleteProduct
@@ -155,8 +157,8 @@ productRouters.delete(
 */
 productRouters.post(
     '/',
-    verifyToken,
-    isAdmin,
+    //verifyToken,
+    //isAdmin,
     schemaValidation(createProductSchema),
     productService.createProduct
 )

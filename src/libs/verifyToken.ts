@@ -12,7 +12,7 @@ interface IToken {
 export const verifyToken = async(req: Request, _res: Response, next: NextFunction) => {
     try{
         //Verifico si existe el token
-        const token = req.headers['auth-token'] as string
+        const token = req.headers['token'] as string
         if(!token){
             throw boom.unauthorized('No se proporciono un token')
         }

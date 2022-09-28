@@ -20,7 +20,15 @@ export const getOneProduct = async(req: Request, res: Response, next: NextFuncti
 
 export const getAllProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const products = await ProductModel.find().populate('id_category', 'name -_id')
+
+        const category = req.query.category
+        const is_active = req.query.active || true
+        let products;
+        if(category){
+            products = await ProductModel.find({'id_category':category, 'is_active':is_active}).populate('id_category', 'name -_id')
+        }else{
+            products = await ProductModel.find().populate('id_category', 'name -_id')
+        }
         if(!products){
             throw boom.notFound('No hay productos')
         }

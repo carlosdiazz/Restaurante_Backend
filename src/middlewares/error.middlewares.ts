@@ -34,7 +34,7 @@ export const mongoErrorHandler = (err:MongooseError, _req: Request, res: Respons
 }
 
 export const jsonErrorHandler = (err, _req: Request, res: Response, next: NextFunction) => {
-    if(err.message.startsWith('Unexpected token')){
+    if(err.message.startsWith('Unexpected token') || err.message.startsWith('Unexpected end of JSON input') || err.message.startsWith('invalid signature')){
         res.status(400).json({
             data:err.name,
             message: err.message,
@@ -59,7 +59,7 @@ export const errorHandler = (err, _req: Request, res: Response, _next: NextFunct
             data: {},
             message: err.message,
             statusCode: 500,
-            error: err.stack
+            error: err.name
         })
 
   }

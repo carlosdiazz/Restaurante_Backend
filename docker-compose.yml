@@ -16,18 +16,18 @@ services:
 
 
 
-  mongo-express:
-    image: mongo-express
-    container_name: mongo-express
-    restart: always
-    environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=root
-      - ME_CONFIG_MONGODB_SERVER=mongo
-    ports:
-      - 8081:8081
-    depends_on:
-      - mongo
-    #networks:
-    #  - mi-mongo
+  #mongo-express:
+  #  image: mongo-express
+  #  container_name: mongo-express
+  #  restart: always
+  #  environment:
+  #    - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+  #    - ME_CONFIG_MONGODB_ADMINPASSWORD=root
+  #    - ME_CONFIG_MONGODB_SERVER=mongo
+  #  ports:
+  #    - 8081:8081
+  #  depends_on:
+  #    - mongo
+  #  #networks:
+  #  #  - mi-mongo
 
