@@ -1,6 +1,6 @@
 import {prop, getModelForClass, modelOptions, Ref, ReturnModelType} from '@typegoose/typegoose'
 //import bcrypt from 'bcrypt'
-import {Role} from './role.models'
+import {Role} from '../../database/models/role.models'
 @modelOptions({schemaOptions: {timestamps: true}})
 
 class User {

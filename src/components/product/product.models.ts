@@ -1,5 +1,5 @@
 import {prop, getModelForClass, Ref} from '@typegoose/typegoose'
-import {Categorie} from './categorie.models'
+import {Categorie} from '../category/categorie.models'
 
 class Product {
     @prop({required: true})

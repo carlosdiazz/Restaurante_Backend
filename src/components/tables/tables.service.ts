@@ -1,5 +1,5 @@
-import {sucessResponse} from '../libs/succesResponse'
-import TablesModel from '../database/models/tables.models'
+import {sucessResponse} from '../../libs/succesResponse'
+import TablesModel from './tables.models'
 import boom from '@hapi/boom'
 import {Request,Response, NextFunction} from 'express'
 

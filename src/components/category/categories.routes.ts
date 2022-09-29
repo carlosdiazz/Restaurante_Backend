@@ -1,7 +1,7 @@
 import {Router} from 'express'
-import { createTablesSchema, deleteTablesSchema, getTablesSchema, updateTableschema } from '../schemas/tables.schemas'
-import {schemaValidation} from '../libs/validarSchemas'
-import * as tableServices from '../services/tables.service'
+import * as categoriesServices from './categories.service'
+import {createCategoriesSchema, updateCategorieschema, deleteCategoriesSchema, getCategoriesSchema} from './categories.schemas'
+import {schemaValidation} from '../../libs/validarSchemas'
 //!import {verifyToken} from '../libs/verifyToken'
 //!import passport from 'passport'
 
@@ -12,7 +12,7 @@ const categoriesRouters = Router()
  * @swagger
  * components:
  *  schemas:
- *   tables:
+ *   categorie:
  *    type: object
  *    properties:
  *     id:
@@ -21,6 +21,9 @@ const categoriesRouters = Router()
  *     name:
  *      type: string
  *      description: Nombre del producto
+ *     description:
+ *      type: string
+ *      description: Descripion del producto
  *     image:
  *      type: string
  *      description: Url de la imagen del producto
@@ -29,8 +32,8 @@ const categoriesRouters = Router()
  *     - description
  *     - image
  *    example:
- *      name: Mesa 1
- *      description:  Descriopcion de la mesa 1
+ *      name: Categoria 1
+ *      description:  Descriopcion del categoria 1
  *      price:   1000
  *      image:   http://localhost:3000/public/imagen.jpg
 */
@@ -38,125 +41,125 @@ const categoriesRouters = Router()
 
 /**
 * @swagger
-* /api/v1/tables:
+* /api/v1/categories:
 *   get:
 *     tags:
-*       - Tables
-*     name: Get Tables
-*     summary: Get all Tables
+*       - Categories
+*     name: Get Categories
+*     summary: Get all Categories
 *     responses:
 *      200:
-*       description: "Lista de la mesas con exito"
+*       description: "Lista de Categories con exito"
 *       content:
 *        application/json:
 *         schema:
 *           type: array
 *           items:
-*               $ref: '#/components/schemas/tables'
+*               $ref: '#/components/schemas/categorie'
 */
 
 categoriesRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),
-    tableServices.getAllTable
+    categoriesServices.getAllCategories
 )
 /**
 * @swagger
-* /api/v1/tables/{id}:
+* /api/v1/categories/{id}:
 *   get:
 *     tags:
-*       - Tables
-*     name: Get One Table
-*     summary: Get One Table
+*       - Categories
+*     name: Get One Categories
+*     summary: Get One Categories
 *     responses:
 *      200:
-*       description: "Table con exito"
+*       description: "Categories con exito"
 *       content:
 *        application/json:
 *         schema:
 *           type: array
 *           items:
-*               $ref: '#/components/schemas/tables'
+*               $ref: '#/components/schemas/categorie'
 */
 categoriesRouters.get(
     '/:id',
-    schemaValidation(getTablesSchema),
-    tableServices.getOneTable
+    schemaValidation(getCategoriesSchema),
+    categoriesServices.getOneCategorie
 )
 /**
 * @swagger
-* /api/v1/tables/{:id}:
+* /api/v1/categories/{:id}:
 *   put:
 *     tags:
-*       - Tables
-*     name: Update Table
-*     summary: Update one Table
+*       - Categories
+*     name: Update Categorie
+*     summary: Update one categories
 *     responses:
 *      200:
-*       description: "Update de table con exito"
+*       description: "Update de Categoria con exito"
 *       content:
 *        application/json:
 *         schema:
 *           type: array
 *           items:
-*               $ref: '#/components/schemas/tables'
+*               $ref: '#/components/schemas/categorie'
 */
 categoriesRouters.put(
     '/:id',
     //!verifyToken,
     //! AGREGAR VALIDACION DE PERMISOS
-    schemaValidation(updateTableschema),
-    tableServices.updateTable
+    schemaValidation(updateCategorieschema),
+    categoriesServices.updateCategorie
 )
 /**
 * @swagger
-* /api/v1/tables/{:id}:
+* /api/v1/categories/{:id}:
 *   delete:
 *     tags:
-*       - Tables
-*     name: Delete Table
-*     summary: Delete one Table
+*       - Categories
+*     name: Delete Categorie
+*     summary: Delete one categories
 *     responses:
 *      200:
-*       description: "Delete de Table con exito"
+*       description: "Delete de Categoria con exito"
 *       content:
 *        application/json:
 *         schema:
 *           type: array
 *           items:
-*               $ref: '#/components/schemas/tables'
+*               $ref: '#/components/schemas/categorie'
 */
 categoriesRouters.delete(
     '/:id',
     //!verifyToken,
     //! AGREGAR VALIDACION DE PERMISOS
-    schemaValidation(deleteTablesSchema),
-    tableServices.deletetable
+    schemaValidation(deleteCategoriesSchema),
+    categoriesServices.deleteCategorie
 )
 /**
 * @swagger
-* /api/v1/tables:
+* /api/v1/categories:
 *   post:
 *     tags:
-*       - Tables
-*     name: Create Table
-*     summary: Create all tables
+*       - Categories
+*     name: Create Categorie
+*     summary: Create all categories
 *     responses:
 *      200:
-*       description: "Lista de Table con exito"
+*       description: "Lista de Categoria con exito"
 *       content:
 *        application/json:
 *         schema:
 *           type: array
 *           items:
-*               $ref: '#/components/schemas/tables'
+*               $ref: '#/components/schemas/categorie'
 */
 categoriesRouters.post(
     '/',
     //!verifyToken,
     //!isAdmin,
-    schemaValidation(createTablesSchema),
-    tableServices.createTable
+    schemaValidation(createCategoriesSchema),
+    categoriesServices.createCategorie
 )
 
 export default categoriesRouters;

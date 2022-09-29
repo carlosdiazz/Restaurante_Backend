@@ -12,5 +12,5 @@ export const swaggerOptionsJson = {
             }
         ]
     },
-    apis: [`${__dirname}/routes/*ts`]
+    apis: [`${__dirname}/components/*/*ts`]
 }

@@ -1,9 +1,9 @@
-import {sucessResponse} from '../libs/succesResponse'
+import {sucessResponse} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
-import userModel from '../database/models/user.models'
-import {encryptPasswoird} from '../libs/encryptedPassword'
+import userModel from './user.models'
+import {encryptPasswoird} from '../../libs/encryptedPassword'
 import {Request,Response, NextFunction} from 'express'
-import { createUserType } from '../schemas/user.schemas'
+import { createUserType } from './user.schemas'
 
 
 export const getOneUser = async(req: Request, res: Response, next: NextFunction)=>{

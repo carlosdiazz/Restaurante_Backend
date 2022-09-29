@@ -1,8 +1,8 @@
-import {sucessResponse} from '../libs/succesResponse'
+import {sucessResponse} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
-import ProductModel from '../database/models/product.models'
+import ProductModel from './product.models'
 import {Request,Response, NextFunction} from 'express'
-import {comprobarCategory} from '../libs/ValidarExistenciaClaveSecundaria'
+import {comprobarCategory} from '../../libs/ValidarExistenciaClaveSecundaria'
 
 
 export const getOneProduct = async(req: Request, res: Response, next: NextFunction)=>{

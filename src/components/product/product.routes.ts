@@ -1,7 +1,7 @@
 import {Router} from 'express'
-import * as productService from '../services/product.service'
-import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema} from '../schemas/product.schemas'
-import {schemaValidation} from '../libs/validarSchemas'
+import * as productService from './product.service'
+import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema} from './product.schemas'
+import {schemaValidation} from '../../libs/validarSchemas'
 //import {isAdmin, verifyToken} from '../libs/verifyToken'
 //import passport from 'passport'
 

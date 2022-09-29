@@ -1,4 +1,4 @@
-import CategorieModel from '../database/models/categorie.models'
+import CategorieModel from '../components/category/categorie.models'
 import roleModel from '../database/models/role.models'
 import boom from '@hapi/boom'
 

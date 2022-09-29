@@ -1,8 +1,8 @@
-import {sucessResponse} from '../libs/succesResponse'
+import {sucessResponse} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
-import CategorieModel from '../database/models/categorie.models'
+import CategorieModel from './categorie.models'
 import {Request,Response, NextFunction} from 'express'
-
+import ProductModel from '../product/product.models'
 
 export const getOneCategorie = async(req: Request, res: Response, next: NextFunction)=>{
     try{
@@ -59,6 +59,12 @@ export const deleteCategorie = async(req: Request, res: Response, next: NextFunc
         if(!deleteCategorie){
             throw boom.notFound('No se encontro esta categoria')
         }
+        const comprobarUso = await ProductModel.find({id_category:id})
+        console.log(comprobarUso)
+        if(comprobarUso.length >=1){
+            throw boom.badRequest('Error al eliminar la categoria esta vinculada a otros porductos')
+        }
+
         const deleteCa = await CategorieModel.findByIdAndRemove(id)
         if(!deleteCa){
             throw boom.badRequest('Error al eliminar la categoria')

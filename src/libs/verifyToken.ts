@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from 'express'
 import boom from '@hapi/boom'
 import {SECRET_JWT_TOKEN} from '../config/config'
 import jwt from 'jsonwebtoken'
-import UserModel from '../database/models/user.models'
+import UserModel from '../components/user/user.models'
 import RoleModel from '../database/models/role.models'
 interface IToken {
     id: string

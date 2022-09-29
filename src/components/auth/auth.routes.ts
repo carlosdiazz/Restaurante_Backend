@@ -1,7 +1,7 @@
 import {Router} from 'express'
-import {signin, signup, profile} from '../services/auth.service'
-import {schemaValidation} from '../libs/validarSchemas'
-import {createUserSchema, loginUserSchema} from '../schemas/user.schemas'
+import {signin, signup, profile} from './auth.service'
+import {schemaValidation} from '../../libs/validarSchemas'
+import {createUserSchema, loginUserSchema} from '../user/user.schemas'
 import passport from 'passport'
 
 const AuthRouters = Router()

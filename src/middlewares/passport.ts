@@ -1,6 +1,6 @@
 import {Strategy, ExtractJwt, StrategyOptions} from 'passport-jwt'
 import {SECRET_JWT_TOKEN} from '../config/config'
-import UserModel from '../database/models/user.models'
+import UserModel from '../components/user/user.models'
 
 
 const opts: StrategyOptions = {

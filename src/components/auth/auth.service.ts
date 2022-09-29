@@ -1,13 +1,13 @@
-import {sucessResponse, sucessResponseHeader} from '../libs/succesResponse'
+import {sucessResponse, sucessResponseHeader} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
-import {encryptPasswoird, comparePassword} from '../libs/encryptedPassword'
+import {encryptPasswoird, comparePassword} from '../../libs/encryptedPassword'
 import {Request,Response, NextFunction} from 'express'
 import jwt from 'jsonwebtoken'
-import {SECRET_JWT_TOKEN} from '../config/config'
-import userModel from '../database/models/user.models'
+import {SECRET_JWT_TOKEN} from '../../config/config'
+import userModel from '../user/user.models'
 //import RoleModel from '../database/models/role.models'
-import { createUserType } from '../schemas/user.schemas'
-import {comprobarRol} from '../libs/ValidarExistenciaClaveSecundaria'
+import { createUserType } from '../user/user.schemas'
+import {comprobarRol} from '../../libs/ValidarExistenciaClaveSecundaria'
 
 
 //Register
