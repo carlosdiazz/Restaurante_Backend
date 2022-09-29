@@ -39,7 +39,7 @@ export const signup = async(
             throw boom.badRequest('Error al crear el usuario')
         }
         //!sucessResponseHeader(req, res, {token, user}, 'Usuario logeado',{'Token':token}, 200)
-        sucessResponseHeader(req, res, {token}, 'Usuario logeado',{'Token':token}, 200)
+        sucessResponseHeader(req, res, {token}, 'Usuario Registrado',{'Token':token}, 200)
 
     }catch(error){
         next(error)
