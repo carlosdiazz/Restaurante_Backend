@@ -1,9 +1,9 @@
 _id: req_05ac549f05d0476aabc5c9b6a9b55015
 type: Request
 parentId: fld_6e21508008874107b75af8703304d1e5
-modified: 1663878820958
+modified: 1664453550684
 created: 1663795002572
-url: "{{ _.URL }}/api/v1/categories/632cc2fbe929823cccb835f1"
+url: "{{ _.URL }}/api/v1/categories/63358b88e68c7cd761a1d755"
 name: deleteCategories
 description: ""
 method: DELETE
