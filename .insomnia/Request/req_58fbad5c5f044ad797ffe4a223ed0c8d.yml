@@ -1,15 +1,22 @@
 _id: req_58fbad5c5f044ad797ffe4a223ed0c8d
 type: Request
 parentId: fld_de16909af8694369b8d3b3651048d02b
-modified: 1664403190541
+modified: 1664415177773
 created: 1664403172406
-url: "{{ _.URL }}/api/v1/tables/6334b96799e29cdf4e2f67a1"
+url: "{{ _.URL }}/api/v1/tables/6334edc5032200c6f85a771f"
 name: updateTable
 description: ""
 method: PUT
-body: {}
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name":"Otro anme"
+    }
 parameters: []
-headers: []
+headers:
+  - name: Content-Type
+    value: application/json
 authentication: {}
 metaSortKey: -1664403172406
 isPrivate: false

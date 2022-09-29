@@ -1,9 +1,9 @@
 _id: req_b75f3f602bd14f87aba82a133a1de3e3
 type: Request
 parentId: fld_6e21508008874107b75af8703304d1e5
-modified: 1663796496162
+modified: 1663822747170
 created: 1663795002597
-url: "{{ _.URL }}/api/v1/categories/632b8340f0f8865a9a0138f5"
+url: "{{ _.URL }}/api/v1/categories/632beaac517c9f4864d2dc5b"
 name: getOneCategorie
 description: ""
 method: GET

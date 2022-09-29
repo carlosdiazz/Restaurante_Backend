@@ -1,9 +1,9 @@
 _id: req_262d7d95185747d98111abfe0eddd74d
 type: Request
 parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1664393279886
+modified: 1664414300718
 created: 1663472711945
-url: "{{ _.URL }}/api/v1/products/63349afc8e0c65a14768c4f3"
+url: "{{ _.URL }}/api/v1/products/6334f24eeb9e9c1d98b97513"
 name: deleteProdcut
 description: ""
 method: DELETE

@@ -1,9 +1,9 @@
 _id: req_c58bdb12720d4e5bb57ea378287add60
 type: Request
 parentId: fld_de16909af8694369b8d3b3651048d02b
-modified: 1664403206676
+modified: 1664415180564
 created: 1664403193276
-url: "{{ _.URL }}/api/v1/tables/6334b96799e29cdf4e2f67a1"
+url: "{{ _.URL }}/api/v1/tables/6334edc5032200c6f85a771f"
 name: deleteTable
 description: ""
 method: DELETE
