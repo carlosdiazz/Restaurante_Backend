@@ -8,7 +8,7 @@ export const schemaValidation = (schema: AnyZodObject) => (req: Request, _res: R
             {
                 body: req.body,
                 params: req.params,
-                // query: req.query,
+                query: req.query,
             }
         )
         next()

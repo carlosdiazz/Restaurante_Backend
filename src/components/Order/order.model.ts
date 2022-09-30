@@ -15,7 +15,7 @@ export class Order {
     id_table: Ref<Tables> //Relacion de uno a uno
 
     @prop({required: true, ref: () => Product})
-    id_product: Ref<Product>[] //Relacion de uno a mucho
+    id_product: Ref<Product>[] //si coloco esto al final hago => Relacion de uno a mucho
 
     _id: string
 

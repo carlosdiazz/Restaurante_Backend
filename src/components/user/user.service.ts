@@ -1,10 +1,9 @@
 import {sucessResponse} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from './user.models'
-import {encryptPasswoird} from '../../libs/encryptedPassword'
 import {Request,Response, NextFunction} from 'express'
-import { createUserType } from './user.schemas'
-
+//import { createUserType } from './user.schemas'
+//import {encryptPasswoird} from '../../libs/encryptedPassword'
 
 export const getOneUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
@@ -35,36 +34,37 @@ export const getAlleUser = async(req: Request, res: Response, next: NextFunction
     }
 }
 
-export const createUser = async(
-    req: Request <unknown, unknown, createUserType>,
-    res: Response,
-    next: NextFunction)=>{
-    try{
-        const {first_name, last_name, nickname, email, password, birth_date, role, is_staff, phone} = req.body;
-        const passwordEncrypted = await encryptPasswoird(password)
-
-        const newUser = new userModel({
-            first_name: first_name,
-            last_name: last_name,
-            nickname: nickname,
-            email: email,
-            password: passwordEncrypted,
-            birth_date: birth_date,
-            role: role,
-            is_staff: is_staff,
-            phone: phone
-        })
-        const userSaved = await (await newUser.save()).populate('role', 'name -_id')
-        if(!userSaved){
-            throw boom.badRequest('Error al crear el usuario')
-        }
-        newUser.password = ''
-        sucessResponse(req, res, userSaved, 'Usuario creado',201)
-
-    }catch(error){
-        next(error)
-    }
-}
+//!Se hace por el componentes auth
+//export const createUser = async(
+//    req: Request <unknown, unknown, createUserType>,
+//    res: Response,
+//    next: NextFunction)=>{
+//    try{
+//        const {first_name, last_name, nickname, email, password, birth_date, role, is_staff, phone} = req.body;
+//        const passwordEncrypted = await encryptPasswoird(password)
+//
+//        const newUser = new userModel({
+//            first_name: first_name,
+//            last_name: last_name,
+//            nickname: nickname,
+//            email: email,
+//            password: passwordEncrypted,
+//            birth_date: birth_date,
+//            role: role,
+//            is_staff: is_staff,
+//            phone: phone
+//        })
+//        const userSaved = await (await newUser.save()).populate('role', 'name -_id')
+//        if(!userSaved){
+//            throw boom.badRequest('Error al crear el usuario')
+//        }
+//        newUser.password = ''
+//        sucessResponse(req, res, userSaved, 'Usuario creado',201)
+//
+//    }catch(error){
+//        next(error)
+//    }
+//}
 
 export const deleteUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{

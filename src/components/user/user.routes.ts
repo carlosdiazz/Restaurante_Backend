@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import * as userService from './user.service'
 import {schemaValidation} from '../../libs/validarSchemas'
-import {createUserSchema, updateUserSchema, getUserSchema, deleteUserSchema} from './user.schemas'
+import {updateUserSchema, getUserSchema, deleteUserSchema} from './user.schemas'
 
 const userRouters = Router()
 
@@ -179,13 +179,13 @@ userRouters.delete(
 *           items:
 *               $ref: '#/components/schemas/User'
 */
-userRouters.post(
-    //!AGREGAR VALIDACION DE TOKEN
-    //! AGREGAR VALIDACION DE PERMISOS
-    //! AGREGAR VALIDACION DE PARAMETROS
-    '/',
-    schemaValidation(createUserSchema),
-    userService.createUser
-)
+//userRouters.post(
+//    //!AGREGAR VALIDACION DE TOKEN
+//    //! AGREGAR VALIDACION DE PERMISOS
+//    //! AGREGAR VALIDACION DE PARAMETROS
+//    '/',
+//    schemaValidation(createUserSchema),
+//    userService.createUser
+//)
 
 export default userRouters;

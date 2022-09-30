@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import {schemaValidation} from '../../libs/validarSchemas'
 import * as orderService from './order.service'
-import { createOrderSchema, deleteOrderSchema, getOrderSchema, updateOrderSchema } from './order.schema'
+import { createOrderSchema, deleteOrderSchema, getOrderSchema, updateOrderSchema, getAllSchema } from './order.schema'
 //!import {verifyToken} from '../libs/verifyToken'
 //!import passport from 'passport'
 
@@ -55,6 +55,7 @@ const orderRouters = Router()
 orderRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),
+    schemaValidation(getAllSchema),
     orderService.getAllOrder
 )
 /**
