@@ -1,7 +1,11 @@
 _id: req_64dfa3b3cb8e4155839a0172567ca00b
 type: Request
 parentId: fld_de16909af8694369b8d3b3651048d02b
+<<<<<<< HEAD
 modified: 1664413342673
+=======
+modified: 1664457290428
+>>>>>>> cbc542a99ad0de116bbada8f85afa50ca6b9bf64
 created: 1664403131500
 url: "{{ _.URL }}/api/v1/tables"
 name: createTable
@@ -11,9 +15,15 @@ body:
   mimeType: application/json
   text: |-
     {
+<<<<<<< HEAD
     	"name":"Mesa 4",
     	"number":4,
     	"imgUrl":"http://hola.com"
+=======
+    	"name":"Mesa 6",
+    	"number":6,
+    	"imgUrl":"http://logo.com"
+>>>>>>> cbc542a99ad0de116bbada8f85afa50ca6b9bf64
     }
 parameters: []
 headers:
