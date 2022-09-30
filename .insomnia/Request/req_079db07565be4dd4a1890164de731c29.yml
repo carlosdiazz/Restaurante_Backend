@@ -1,15 +1,9 @@
 _id: req_079db07565be4dd4a1890164de731c29
 type: Request
 parentId: fld_de16909af8694369b8d3b3651048d02b
-<<<<<<< HEAD
 modified: 1664415074493
 created: 1664403080372
 url: "{{ _.URL }}/api/v1/tables/6334edc5032200c6f85a771f"
-=======
-modified: 1664457267616
-created: 1664403080372
-url: "{{ _.URL }}/api/v1/tables/63358941ff5ae353c232fa9f"
->>>>>>> cbc542a99ad0de116bbada8f85afa50ca6b9bf64
 name: getOneTable
 description: ""
 method: GET
