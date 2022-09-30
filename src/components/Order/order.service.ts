@@ -30,10 +30,10 @@ export const getAllOrder = async(req:Request, res: Response, next: NextFunction)
             filter['id_table'] = req.query.id_table
         }
         if(req.query.close){
-            if(req.query.close === 'true'){
+            if(req.query.close === 'true' || req.query.close === 'True'){
                 filter['close'] =  true
             }
-            if(req.query.close === 'false'){
+            if(req.query.close === 'false' || req.query.close === 'False'){
                 filter['close'] =  false
             }
         }
