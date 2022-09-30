@@ -7,7 +7,8 @@ import {comprobarClaveProducto, comprobarClaveTable} from '../../libs/ValidarExi
 export const getOneOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
         const {id} = req.params
-        const order = await orderModel.findById(id).populate('id_table', 'name number -_id').populate('id_product', 'name price -_id')
+        const order = await orderModel.findById(id).populate('id_table').populate('id_product',)
+
         if(!order){
             throw boom.notFound("Order no encontrada")
         }
@@ -25,7 +26,9 @@ export const getAllOrder = async(req:Request, res: Response, next: NextFunction)
     try{
 
         let filter = {}
+        let filter_sort = {}
 
+        //Filtro para la query
         if(req.query.id_table) {
             filter['id_table'] = req.query.id_table
         }
@@ -41,7 +44,25 @@ export const getAllOrder = async(req:Request, res: Response, next: NextFunction)
             filter['status'] =  req.query.status
         }
 
-        const orders = await orderModel.find(filter).populate('id_table', 'name number -_id').populate('id_product', 'name price -_id')
+        //!Filtro para el orden
+        if(req.query.orderStatus==="desc"){
+            filter_sort['status'] = 1
+        }
+
+        if(req.query.orderStatus==="asc"){
+            filter_sort['status'] = -1
+        }
+
+        if(req.query.orderDate==="desc"){
+            filter_sort['createdAt'] = 1
+        }
+
+        if(req.query.orderDate==="asc"){
+            filter_sort['createdAt'] = -1
+        }
+
+        const orders = await orderModel.find(filter).populate('id_table').populate('id_product').sort(filter_sort)
+
         if(!orders){
             throw boom.notFound("Ordenes no encontrada")
         }

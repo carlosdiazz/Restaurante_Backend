@@ -52,6 +52,7 @@ const orderRouters = Router()
 *               $ref: '#/components/schemas/order'
 */
 
+//? Tambien se puede ordenar las ordenes ya sea descendtes o ascedentes... asc y desc
 orderRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),

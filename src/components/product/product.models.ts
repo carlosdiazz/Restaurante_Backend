@@ -23,6 +23,8 @@ export class Product {
     @prop({required: true, ref: () => Categorie})
     id_category: Ref<Categorie>
 
+    _id
+
 }
 
 const ProductModel = getModelForClass(Product)
