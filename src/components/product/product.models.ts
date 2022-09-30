@@ -1,7 +1,7 @@
 import {prop, getModelForClass, Ref} from '@typegoose/typegoose'
 import {Categorie} from '../category/categorie.models'
 
-class Product {
+export class Product {
     @prop({required: true})
     name: string
 

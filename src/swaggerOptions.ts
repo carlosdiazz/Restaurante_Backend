@@ -1,3 +1,4 @@
+console.log(__dirname)
 export const swaggerOptionsJson = {
     definition : {
         openapi: '3.0.0',
@@ -12,5 +13,13 @@ export const swaggerOptionsJson = {
             }
         ]
     },
-    apis: [`${__dirname}/components/*/*ts`]
+    apis: [
+
+        `${__dirname}/components/auth/*routes.ts`,
+        `${__dirname}/components/category/*routes.ts`,
+        `${__dirname}/components/Order/*routes.ts`,
+        `${__dirname}/components/product/*routes.ts`,
+        `${__dirname}/components/tables/*routes.ts`,
+        `${__dirname}/components/user/*routes.ts`
+    ]
 }
