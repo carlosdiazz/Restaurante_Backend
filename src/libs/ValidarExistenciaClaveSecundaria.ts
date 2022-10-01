@@ -37,6 +37,7 @@ export const comprobarClaveProductoIndividual = async (id: string) => {
     }
 }
 
+//Esta ffuncions e usara para cuando sea una relaicon multiples
 export const comprobarClaveProducto = async(arr:Array<string>) =>{
     const arrProduct = await ProductModel.find()
     if(!arrProduct){

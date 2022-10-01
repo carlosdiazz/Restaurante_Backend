@@ -2,7 +2,7 @@ import boom from '@hapi/boom'
 import {Request, Response, NextFunction} from 'express'
 import {sucessResponse} from '../../libs/succesResponse'
 import orderModel from './order.model'
-import {comprobarClaveProducto, comprobarClaveTable} from '../../libs/ValidarExistenciaClaveSecundaria'
+import {comprobarClaveProductoIndividual, comprobarClaveTable} from '../../libs/ValidarExistenciaClaveSecundaria'
 
 export const getOneOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
@@ -77,7 +77,7 @@ export const createOrder = async(req:Request, res: Response, next: NextFunction)
     try{
 
         const {id_table, id_product, status, close} = req.body
-        await comprobarClaveProducto(id_product) //Aqui compruebo la llave secundaria de producto
+        await comprobarClaveProductoIndividual(id_product) //Aqui compruebo la llave secundaria de producto
         await comprobarClaveTable(id_table)
         const order = {
             id_table,
@@ -93,7 +93,7 @@ export const createOrder = async(req:Request, res: Response, next: NextFunction)
             throw boom.badData("Error al crear la orden")
         }
 
-        sucessResponse(req, res, orderSaved,'Order Creada', 200)
+        sucessResponse(req, res, orderSaved,'Order Creada', 201)
     }catch(error){
         next(error)
     }

@@ -3,7 +3,8 @@ import {Status_Order} from '../../libs/Enums'
 
 const id            = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 const id_table      = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
-const id_product    = z.array(id).min(1)
+//const id_product    = z.array(id).min(1)
+const id_product    = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 const status        = z.nativeEnum(Status_Order) //PENDING or DELIVERED //Falta esto
 const close         = z.boolean()
 
