@@ -38,6 +38,13 @@ export const isAdmin = async(req: Request, _res: Response, next : NextFunction) 
         const user = await UserModel.findById(req.body.userId, {password: 0});
         const roles = await RoleModel.find({_id: {$in: user?.role}});
 
+        if(!user){
+            throw boom.unauthorized('Este usuario no existe');
+        }
+
+        console.log(roles)
+
+
         for(let i = 0; i < roles.length; i++){
             if(roles[i].name === 'admin'){
                 next();

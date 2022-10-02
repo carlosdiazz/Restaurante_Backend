@@ -2,7 +2,6 @@ import {Router} from 'express'
 import * as userService from './user.service'
 import {schemaValidation} from '../../libs/validarSchemas'
 import {updateUserSchema, getUserSchema, deleteUserSchema} from './user.schemas'
-
 const userRouters = Router()
 
 /**

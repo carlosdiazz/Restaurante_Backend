@@ -12,3 +12,8 @@ export enum Status_Payment_ENUM {
     PENDING = 'PENDING',
     PAID = 'PAID'
 }
+
+export enum orderCreated_At_ENUM {
+    ASC   =   'ASC',
+    DES   =   'DES'
+}

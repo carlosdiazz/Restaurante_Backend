@@ -1,11 +1,11 @@
 import {z} from 'zod'
-import {Pay_Payment_ENUM, Status_Payment_ENUM} from '../../libs/Enums'
+import {Pay_Payment_ENUM, Status_Payment_ENUM, orderCreated_At_ENUM} from '../../libs/Enums'
 
 const id                = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 const total_Payment     = z.number().min(1)
 const payment_Type      = z.nativeEnum(Pay_Payment_ENUM)
 const status_Payment    = z.nativeEnum(Status_Payment_ENUM)
-
+const orderCreated_At   = z.nativeEnum(orderCreated_At_ENUM)
 
 export const createPayment = z.object({
     body: z.object({
@@ -41,6 +41,7 @@ export const getAllPayment = z.object({
     query: z.object({
         id_table: id.optional(),
         status_Payment: status_Payment.optional(),
+        orderCreated_At: orderCreated_At.optional()
     })
 })
 

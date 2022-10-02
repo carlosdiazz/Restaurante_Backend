@@ -28,6 +28,10 @@ export const getAllOrder = async(req:Request, res: Response, next: NextFunction)
         let filter = {}
         let filter_sort = {}
 
+        if(req.query.id_payment){
+            filter['id_payment'] = req.query.id_payment
+        }
+
         //Filtro para la query
         if(req.query.id_table) {
             filter['id_table'] = req.query.id_table
@@ -108,6 +112,7 @@ export const updateOrder = async(req:Request, res: Response, next: NextFunction)
     try{
         const {id} = req.params
         const {status, close,id_payment} = req.body
+        console.log(id_payment)
         if(id_payment){
             await comprobarPayment(id_payment)
         }
@@ -120,7 +125,7 @@ export const updateOrder = async(req:Request, res: Response, next: NextFunction)
         const orderUdpdate = await orderModel.findByIdAndUpdate(id, {
             status: status,
             close: close,
-            id_payment: id_payment || null
+            id_payment: id_payment
         },{new: true}).populate('id_table', 'name number -_id').populate('id_product', 'name price -_id')
 
         if(!orderUdpdate){

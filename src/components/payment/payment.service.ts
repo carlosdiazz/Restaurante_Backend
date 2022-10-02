@@ -3,7 +3,7 @@ import {Request, Response, NextFunction} from 'express'
 import {sucessResponse} from '../../libs/succesResponse'
 import paymentModel from './payment.model'
 import {comprobarClaveTable} from '../../libs/ValidarExistenciaClaveSecundaria'
-import {Status_Payment_ENUM} from '../../libs/Enums'
+import {Status_Payment_ENUM, orderCreated_At_ENUM} from '../../libs/Enums'
 
 //! table, statusPayment
 
@@ -25,6 +25,7 @@ export const getOnePayment = async(req:Request, res: Response, next: NextFunctio
 export const getAllPayment = async(req:Request, res: Response, next: NextFunction) => {
     try{
         let filter = {}
+        let filter_sort = {}
 
         if(req.query.id_table){
             filter['id_table'] = req.query.id_table
@@ -39,7 +40,17 @@ export const getAllPayment = async(req:Request, res: Response, next: NextFunctio
             }
         }
 
-        const payments = await paymentModel.find(filter).populate("id_table")
+        if(req.query.orderCreated_At){
+            if(req.query.orderCreated_At === orderCreated_At_ENUM.ASC){
+                filter_sort['createdAt'] = -1
+            }
+            if(req.query.orderCreated_At === orderCreated_At_ENUM.DES){
+                filter_sort['createdAt'] = 1
+            }
+        }
+
+
+        const payments = await paymentModel.find(filter).populate("id_table").sort(filter_sort)
         if(!payments){
             throw boom.notFound("Payment no encontrada")
         }

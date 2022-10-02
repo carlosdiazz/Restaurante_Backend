@@ -43,6 +43,7 @@ export const getAllSchema = z.object({
     query: z.object({
         id_table: id_table.optional(),
         status: status.optional(),
+        id_payment: id_payment.optional()
         //close: close.optional()
     })
 })
