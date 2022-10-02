@@ -1,17 +1,17 @@
-_id: req_8e192b0eeead4548b5902d1b0fa5cbe4
+_id: req_846fded39d93469b956abc4305e83d5c
 type: Request
-parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664682029513
-created: 1664487248723
-url: "{{ _.URL }}/api/v1/order/633905502111a63fae12d1fe"
-name: deleteOrder
+parentId: fld_308d510847c2496cab2e97db94a06428
+modified: 1664686254170
+created: 1664673341704
+url: "{{ _.URL }}/api/v1/payment/63391043f831bc40cd290aff"
+name: deletePayment
 description: ""
 method: DELETE
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1664455526374.125
+metaSortKey: -1664510217277.75
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

@@ -1,15 +1,22 @@
 _id: req_5c8f6cd1a2f64305802a291b5fa3e8ac
 type: Request
 parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664487233265
+modified: 1664681616524
 created: 1664487220830
-url: "{{ _.URL }}/api/v1/order/6326a655078f65f926baf29c"
+url: "{{ _.URL }}/api/v1/order/633905502111a63fae12d1fe"
 name: updateOrder
 description: ""
 method: PUT
-body: {}
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"id_payment":"6339060190419ef1e47e8ac5"
+    }
 parameters: []
-headers: []
+headers:
+  - name: Content-Type
+    value: application/json
 authentication: {}
 metaSortKey: -1664465992993.75
 isPrivate: false

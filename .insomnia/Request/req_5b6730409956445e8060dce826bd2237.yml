@@ -1,26 +1,24 @@
-_id: req_64dfa3b3cb8e4155839a0172567ca00b
+_id: req_5b6730409956445e8060dce826bd2237
 type: Request
-parentId: fld_de16909af8694369b8d3b3651048d02b
-modified: 1664681483790
-created: 1664403131500
-url: "{{ _.URL }}/api/v1/tables"
-name: createTable
+parentId: fld_308d510847c2496cab2e97db94a06428
+modified: 1664686235231
+created: 1664673322456
+url: "{{ _.URL }}/api/v1/payment/63390cd5f831bc40cd290a1e"
+name: updatePayment
 description: ""
-method: POST
+method: PUT
 body:
   mimeType: application/json
   text: |-
     {
-    	"name":"Mesa 4",
-    	"number":4,
-    	"imgUrl":"http://hola.com"
+    	"status_Payment":"PAID"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1664403131500
+metaSortKey: -1664533508322.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

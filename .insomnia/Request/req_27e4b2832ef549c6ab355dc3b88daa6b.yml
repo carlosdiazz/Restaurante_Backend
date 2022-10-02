@@ -1,7 +1,7 @@
 _id: req_27e4b2832ef549c6ab355dc3b88daa6b
 type: Request
 parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664488621392
+modified: 1664681486853
 created: 1664486981893
 url: "{{ _.URL }}/api/v1/order"
 name: createOrders
@@ -11,11 +11,11 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"id_table":"6326a655078f65f926baf29c",
-    	"id_product":"6326a655078f65f926baf29c",
-    	"status":"true",
-    	"close": false
-    	
+    	"id_table":"6338f41ec6175c08ce5487a0",
+    	"id_product":"6338992dea7320d366a312a6",
+    	"status":"PENDING",
+    	"close": true,
+    	"id_payment":"6338f52edcf04a333cf0d5d8"
     }
 parameters: []
 headers:

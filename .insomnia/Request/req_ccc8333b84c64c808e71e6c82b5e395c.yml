@@ -1,9 +1,9 @@
 _id: req_ccc8333b84c64c808e71e6c82b5e395c
 type: Request
 parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664486942915
+modified: 1664681332911
 created: 1664486926233
-url: "{{ _.URL }}/api/v1/order/6326a655078f65f926baf29c"
+url: "{{ _.URL }}/api/v1/order/633905502111a63fae12d1fe"
 name: getOneOrder
 description: ""
 method: GET
