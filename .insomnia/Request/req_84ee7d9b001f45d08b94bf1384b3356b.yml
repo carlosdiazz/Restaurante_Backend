@@ -1,17 +1,19 @@
-_id: req_8e192b0eeead4548b5902d1b0fa5cbe4
+_id: req_84ee7d9b001f45d08b94bf1384b3356b
 type: Request
 parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664682029513
-created: 1664487248723
-url: "{{ _.URL }}/api/v1/order/633905502111a63fae12d1fe"
-name: deleteOrder
+modified: 1664685564538
+created: 1664685244106
+url: "{{ _.URL
+  }}/api/v1/order?id_table=6338f41ec6175c08ce5487a0&close=False&status=PENDING&\
+  orderStatus=asc&orderDate=desc"
+name: getAllOrdersParametros
 description: ""
-method: DELETE
+method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1664455526374.125
+metaSortKey: -1664434593134.875
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

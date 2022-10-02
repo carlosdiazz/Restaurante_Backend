@@ -1,9 +1,9 @@
 _id: req_1e4898108d2a4765849f7d722b760dc7
 type: Request
 parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1664457312860
+modified: 1664660906322
 created: 1663472717242
-url: "{{ _.URL }}/api/v1/products/6334b96799e29cdf4e2f67a1"
+url: "{{ _.URL }}/api/v1/products/63389947ea7320d366a312ac"
 name: getOneProduct
 description: ""
 method: GET
