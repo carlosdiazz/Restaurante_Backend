@@ -3,6 +3,7 @@ import {Status_Order_ENUM} from '../../libs/Enums'
 
 const id            = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 const id_table      = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
+const id_payment    = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 //const id_product    = z.array(id).min(1)
 const id_product    = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 const status        = z.nativeEnum(Status_Order_ENUM) //PENDING or DELIVERED //Falta esto
@@ -12,6 +13,7 @@ export const createOrderSchema = z.object({
     body: z.object({
         id_table: id_table,
         id_product: id_product,
+        id_payment: id_payment.optional(),
         status: status,
         close: close
     })
@@ -20,7 +22,8 @@ export const createOrderSchema = z.object({
 export const updateOrderSchema = z.object({
     body:z.object({
         status: status.optional(),
-        close: close.optional()
+        close: close.optional(),
+        id_payment: id_payment.optional(),
     })
 })
 

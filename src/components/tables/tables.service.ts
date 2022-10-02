@@ -2,7 +2,7 @@ import {sucessResponse} from '../../libs/succesResponse'
 import TablesModel from './tables.models'
 import boom from '@hapi/boom'
 import {Request,Response, NextFunction} from 'express'
-
+import orderModel from '../Order/order.model'
 
 export const getOneTable = async(req: Request, res: Response, next: NextFunction)=>{
     try{
@@ -58,11 +58,18 @@ export const createTable = async(req: Request, res: Response, next: NextFunction
 export const deletetable = async(req: Request, res: Response, next: NextFunction)=>{
     try{
 
-        const {id} =req.params
+        const {id} = req.params
         const table = await TablesModel.findById(id)
         if(!table){
             throw boom.notFound('Esta mesa no existe')
         }
+
+        const comprobarUso = await orderModel.find({id_table:id})
+        if(comprobarUso.length >=1){
+            throw boom.badRequest('Error al eliminar la Table tienes pedidos pendientes')
+        }
+
+
         const tableDelete = await TablesModel.findByIdAndDelete(id)
         if(!tableDelete){
             throw boom.badRequest('Error al borrar esta mesa')

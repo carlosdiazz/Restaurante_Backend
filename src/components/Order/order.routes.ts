@@ -52,7 +52,8 @@ const orderRouters = Router()
 *               $ref: '#/components/schemas/order'
 */
 
-//? Tambien se puede ordenar las ordenes ya sea descendtes o ascedentes... asc y desc
+
+// ?id_table=6338f41ec6175c08ce5487a0&status_Payment=PENDING
 orderRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),

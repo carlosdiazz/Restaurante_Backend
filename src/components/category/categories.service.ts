@@ -60,7 +60,6 @@ export const deleteCategorie = async(req: Request, res: Response, next: NextFunc
             throw boom.notFound('No se encontro esta categoria')
         }
         const comprobarUso = await ProductModel.find({id_category:id})
-        console.log(comprobarUso)
         if(comprobarUso.length >=1){
             throw boom.badRequest('Error al eliminar la categoria esta vinculada a otros porductos')
         }

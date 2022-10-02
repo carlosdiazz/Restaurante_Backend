@@ -3,11 +3,19 @@ import CategorieModel from '../components/category/categorie.models'
 import roleModel from '../database/models/role.models'
 import ProductModel from '../components/product/product.models'
 import TablesModel from '../components/tables/tables.models'
+import paymentModel from '../components/payment/payment.model'
 
 export const comprobarCategory = async(id:string) => {
     const comprobar = await CategorieModel.findById(id)
     if(!comprobar){
         throw boom.badRequest('Este id no tiene una categoria asignada')
+    }
+}
+
+export const comprobarPayment = async(id:string) => {
+    const comprobar = await paymentModel.findById(id)
+    if(!comprobar){
+        throw boom.badRequest('Este id no tiene una pago asigando')
     }
 }
 

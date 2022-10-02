@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import {schemaValidation} from '../../libs/validarSchemas'
 import * as paymentService from './payment.service'
-import { createPayment, updatePayment, deletePayment, getOnePayment} from './payment.schema'
+import { createPayment, updatePayment, deletePayment, getOnePayment, getAllPayment} from './payment.schema'
 //!import {verifyToken} from '../libs/verifyToken'
 //!import passport from 'passport'
 
@@ -53,10 +53,11 @@ const paymentRouters = Router()
 */
 
 //? Tambien se puede ordenar las ordenes ya sea descendtes o ascedentes... asc y desc
+// /order?id_table=6338f41ec6175c08ce5487a0&close=False&status=PENDING&orderStatus=asc&orderDate=desc
 paymentRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),
-    //schemaValidation(getA),
+    schemaValidation(getAllPayment),
     paymentService.getAllPayment
 )
 /**

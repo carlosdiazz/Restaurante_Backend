@@ -37,5 +37,14 @@ export const getOnePayment = z.object({
     })
 })
 
+export const getAllPayment = z.object({
+    query: z.object({
+        id_table: id.optional(),
+        status_Payment: status_Payment.optional(),
+    })
+})
+
+
+
 // aqui hago un type para que me deje usar el metodo .map() de zod
 export type createPaymentType = z.infer<typeof createPayment>['body']

@@ -2,7 +2,10 @@ import boom from '@hapi/boom'
 import {Request, Response, NextFunction} from 'express'
 import {sucessResponse} from '../../libs/succesResponse'
 import paymentModel from './payment.model'
-//import TablesModel from '../tables/tables.models'
+import {comprobarClaveTable} from '../../libs/ValidarExistenciaClaveSecundaria'
+import {Status_Payment_ENUM} from '../../libs/Enums'
+
+//! table, statusPayment
 
 export const getOnePayment = async(req:Request, res: Response, next: NextFunction) => {
     try{
@@ -21,8 +24,22 @@ export const getOnePayment = async(req:Request, res: Response, next: NextFunctio
 
 export const getAllPayment = async(req:Request, res: Response, next: NextFunction) => {
     try{
+        let filter = {}
 
-        const payments = await paymentModel.find().populate("id_table")
+        if(req.query.id_table){
+            filter['id_table'] = req.query.id_table
+        }
+
+        if(req.query.status_Payment){
+            if(req.query.status_Payment === Status_Payment_ENUM.PENDING) {
+                filter['status_Payment'] = req.query.status_Payment
+            }
+            if(req.query.status_Payment === Status_Payment_ENUM.PAID) {
+                filter['status_Payment'] = req.query.status_Payment
+            }
+        }
+
+        const payments = await paymentModel.find(filter).populate("id_table")
         if(!payments){
             throw boom.notFound("Payment no encontrada")
         }
@@ -36,7 +53,7 @@ export const createPayment = async(req:Request, res: Response, next: NextFunctio
     try{
 
         const {total_Payment, payment_Type, status_Payment, id_table} = req.body
-
+        await comprobarClaveTable(id_table)
         const newPayment = new paymentModel({
             total_Payment: total_Payment,
             payment_Type: payment_Type,
@@ -61,6 +78,9 @@ export const updatePayment = async(req:Request, res: Response, next: NextFunctio
 
         const {id} = req.params
         const {total_Payment, payment_Type, status_Payment, id_table} = req.body
+        if(id_table){
+            await comprobarClaveTable(id_table)
+        }
         const payment = await paymentModel.findById(id)
         if(!payment){
             throw boom.notFound("Payment no encontrada")

@@ -2,12 +2,12 @@ import boom from '@hapi/boom'
 import {Request, Response, NextFunction} from 'express'
 import {sucessResponse} from '../../libs/succesResponse'
 import orderModel from './order.model'
-import {comprobarClaveProductoIndividual, comprobarClaveTable} from '../../libs/ValidarExistenciaClaveSecundaria'
+import {comprobarClaveProductoIndividual, comprobarClaveTable, comprobarPayment} from '../../libs/ValidarExistenciaClaveSecundaria'
 
 export const getOneOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
         const {id} = req.params
-        const order = await orderModel.findById(id).populate('id_table').populate('id_product')
+        const order = await orderModel.findById(id).populate('id_table').populate('id_product').populate('id_payment')
 
         if(!order){
             throw boom.notFound("Order no encontrada")
@@ -61,7 +61,7 @@ export const getAllOrder = async(req:Request, res: Response, next: NextFunction)
             filter_sort['createdAt'] = -1
         }
 
-        const orders = await orderModel.find(filter).populate('id_table').populate('id_product').sort(filter_sort)
+        const orders = await orderModel.find(filter).populate('id_table').populate('id_product').populate('id_payment').sort(filter_sort)
 
         if(!orders){
             throw boom.notFound("Ordenes no encontrada")
@@ -76,18 +76,22 @@ export const getAllOrder = async(req:Request, res: Response, next: NextFunction)
 export const createOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
 
-        const {id_table, id_product, status, close} = req.body
+        const {id_table, id_product, status, close, id_payment} = req.body
+        if(id_payment){
+            await comprobarPayment(id_payment)
+        }
         await comprobarClaveProductoIndividual(id_product) //Aqui compruebo la llave secundaria de producto
         await comprobarClaveTable(id_table)
         const order = {
             id_table,
             id_product,
             status,
-            close
+            close,
+            id_payment : id_payment || null
         }
 
         const newOrder = new orderModel(order)
-        const orderSaved =  await (await (await newOrder.save()).populate('id_product' )).populate('id_table')
+        const orderSaved =  await (await (await (await newOrder.save()).populate('id_product' )).populate('id_table')).populate('id_payment')
 
         if(!orderSaved){
             throw boom.badData("Error al crear la orden")
@@ -103,7 +107,10 @@ export const createOrder = async(req:Request, res: Response, next: NextFunction)
 export const updateOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
         const {id} = req.params
-        const {status, close} = req.body
+        const {status, close,id_payment} = req.body
+        if(id_payment){
+            await comprobarPayment(id_payment)
+        }
 
         const order = await orderModel.findById(id)
         if(!order){
@@ -112,7 +119,8 @@ export const updateOrder = async(req:Request, res: Response, next: NextFunction)
 
         const orderUdpdate = await orderModel.findByIdAndUpdate(id, {
             status: status,
-            close: close
+            close: close,
+            id_payment: id_payment || null
         },{new: true}).populate('id_table', 'name number -_id').populate('id_product', 'name price -_id')
 
         if(!orderUdpdate){
