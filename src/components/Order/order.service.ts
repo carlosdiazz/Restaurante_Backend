@@ -7,7 +7,7 @@ import {comprobarClaveProductoIndividual, comprobarClaveTable} from '../../libs/
 export const getOneOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
         const {id} = req.params
-        const order = await orderModel.findById(id).populate('id_table').populate('id_product',)
+        const order = await orderModel.findById(id).populate('id_table').populate('id_product')
 
         if(!order){
             throw boom.notFound("Order no encontrada")
@@ -98,7 +98,7 @@ export const createOrder = async(req:Request, res: Response, next: NextFunction)
         next(error)
     }
 }
-//!Qude Aquio
+
 
 export const updateOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{

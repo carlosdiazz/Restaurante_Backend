@@ -5,6 +5,7 @@ import categoriesRouters from '../components/category/categories.routes'
 import tablesRouters from '../components/tables/tables.routes'
 import AuthRouters from '../components/auth/auth.routes'
 import orderRouters from '../components/Order/order.routes'
+import paymentRouters from '../components/payment/payment.routes'
 import boom from '@hapi/boom'
 import {Application, Request, Response} from 'express'
 
@@ -19,6 +20,7 @@ const routerAPI = (app: Application) => {
         routerV1.use('/categories', categoriesRouters)
         routerV1.use('/tables',tablesRouters )
         routerV1.use('/order', orderRouters )
+        routerV1.use('/payment', paymentRouters )
 
     app.all('*', (_req: Request, _res: Response ,next) =>{
         next(boom.notFound("La ruta no existe"))

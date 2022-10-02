@@ -20,6 +20,7 @@ export const swaggerOptionsJson = {
         `${__dirname}/components/Order/*routes.ts`,
         `${__dirname}/components/product/*routes.ts`,
         `${__dirname}/components/tables/*routes.ts`,
-        `${__dirname}/components/user/*routes.ts`
+        `${__dirname}/components/user/*routes.ts`,
+        `${__dirname}/components/payment/*routes.ts`,
     ]
 }
