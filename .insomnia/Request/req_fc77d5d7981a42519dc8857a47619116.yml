@@ -1,10 +1,11 @@
 _id: req_fc77d5d7981a42519dc8857a47619116
 type: Request
 parentId: fld_308d510847c2496cab2e97db94a06428
-modified: 1664685226264
+modified: 1664752315851
 created: 1664685212584
 url: "{{ _.URL
-  }}/api/v1/payment?id_table=6338f41ec6175c08ce5487a0&status_Payment=PENDING"
+  }}/api/v1/payment?id_table=6338f41ec6175c08ce5487a0&status_Payment=PENDING&or\
+  derCreated_At=DES"
 name: getAllPaymentParametros
 description: ""
 method: GET

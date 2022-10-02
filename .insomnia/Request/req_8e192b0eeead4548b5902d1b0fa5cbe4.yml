@@ -1,9 +1,9 @@
 _id: req_8e192b0eeead4548b5902d1b0fa5cbe4
 type: Request
 parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664682029513
+modified: 1664753301063
 created: 1664487248723
-url: "{{ _.URL }}/api/v1/order/633905502111a63fae12d1fe"
+url: "{{ _.URL }}/api/v1/order/633a1cf5e47d4ca27c70da02"
 name: deleteOrder
 description: ""
 method: DELETE

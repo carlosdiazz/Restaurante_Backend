@@ -1,9 +1,9 @@
 _id: req_5b6730409956445e8060dce826bd2237
 type: Request
 parentId: fld_308d510847c2496cab2e97db94a06428
-modified: 1664686235231
+modified: 1664741461129
 created: 1664673322456
-url: "{{ _.URL }}/api/v1/payment/63390cd5f831bc40cd290a1e"
+url: "{{ _.URL }}/api/v1/payment/6339efefec691fa065468b79"
 name: updatePayment
 description: ""
 method: PUT
@@ -11,7 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"status_Payment":"PAID"
+    	"status_Payment":"PENDING"
     }
 parameters: []
 headers:

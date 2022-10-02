@@ -1,9 +1,9 @@
 _id: req_846fded39d93469b956abc4305e83d5c
 type: Request
 parentId: fld_308d510847c2496cab2e97db94a06428
-modified: 1664686254170
+modified: 1664753286632
 created: 1664673341704
-url: "{{ _.URL }}/api/v1/payment/63391043f831bc40cd290aff"
+url: "{{ _.URL }}/api/v1/payment/633a1cf9e47d4ca27c70da13"
 name: deletePayment
 description: ""
 method: DELETE
