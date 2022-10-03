@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { createTablesSchema, deleteTablesSchema, getTablesSchema, updateTableschema } from './tables.schemas'
+import { createTablesSchema, deleteTablesSchema, getTablesSchema, updateTableschema, getAllTablesShema } from './tables.schemas'
 import {schemaValidation} from '../../libs/validarSchemas'
 import * as tableServices from './tables.service'
 //!import {verifyToken} from '../libs/verifyToken'
@@ -58,6 +58,7 @@ const categoriesRouters = Router()
 categoriesRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),
+    schemaValidation(getAllTablesShema),
     tableServices.getAllTable
 )
 /**

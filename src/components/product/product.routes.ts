@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import * as productService from './product.service'
-import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema} from './product.schemas'
+import {getProductSchema, createProductSchema, updateProductSchema, deleteProductSchema, getAllProductSchema} from './product.schemas'
 import {schemaValidation} from '../../libs/validarSchemas'
 //import {isAdmin, verifyToken} from '../libs/verifyToken'
 //import passport from 'passport'
@@ -62,6 +62,7 @@ const productRouters = Router()
 productRouters.get(
     '/',
     //!passport.authenticate('jwt', {session: false}),
+    schemaValidation(getAllProductSchema),
     productService.getAllProduct
 )
 /**

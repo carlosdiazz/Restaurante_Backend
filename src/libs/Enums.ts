@@ -17,3 +17,7 @@ export enum orderCreated_At_ENUM {
     ASC   =   'ASC',
     DES   =   'DES'
 }
+export enum is_active_products_ENUM {
+    TRUE    =   "TRUE",
+    FALSE   =   "FALSE"
+}

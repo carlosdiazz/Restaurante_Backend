@@ -22,7 +22,15 @@ export const getOneTable = async(req: Request, res: Response, next: NextFunction
 export const getAllTable = async(req: Request, res: Response, next: NextFunction)=>{
     try{
 
-        const tables = await TablesModel.find()
+        //! Falta identificar si es numero oh no el query
+        let filter = {}
+        if(req.query.number){
+            if(req.query.number) {
+                filter['number'] = req.query.number
+            }
+        }
+
+        const tables = await TablesModel.find(filter)
         if(!tables){
             throw boom.notFound('Error al Buscar la lista de  Mesa')
         }

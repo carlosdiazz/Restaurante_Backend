@@ -3,7 +3,7 @@ import boom from '@hapi/boom'
 import ProductModel from './product.models'
 import {Request,Response, NextFunction} from 'express'
 import {comprobarCategory} from '../../libs/ValidarExistenciaClaveSecundaria'
-
+import {is_active_products_ENUM} from '../../libs/Enums'
 
 export const getOneProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
@@ -24,18 +24,17 @@ export const getAllProduct = async(req: Request, res: Response, next: NextFuncti
         if(req.query.category){
             filter['id_category'] = req.query.category
         }
-        if (req.query.active){
-            filter['is_active'] = req.query.active
+        if (req.query.is_active){
+            if(req.query.is_active === is_active_products_ENUM.TRUE){
+                filter['is_active'] = true
+            }
+            if(req.query.is_active === is_active_products_ENUM.FALSE){
+                filter['is_active'] = false
+            }
         }
-        //const category = req.query.category || null
-        //const is_active = req.query.active || null
-        //console.log(is_active)
-        //let products;
-        //if(category || is_active){
-        //    products = await ProductModel.find({'id_category':category, 'is_active':is_active}).populate('id_category', 'name -_id')
-        //}else{
+
         const products = await ProductModel.find(filter).populate('id_category', 'name description _id')
-        //}
+
         if(!products){
             throw boom.notFound('No hay productos')
         }
