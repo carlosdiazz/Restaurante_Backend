@@ -1,9 +1,9 @@
 _id: req_6f0218a123ce4a1b816000a49fbf75be
 type: Request
 parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1664753488464
+modified: 1664808837230
 created: 1664486964890
-url: "{{ _.URL }}/api/v1/order?id_payment=633a1eb06d04fb188fdef23c"
+url: "{{ _.URL }}/api/v1/order"
 name: getAllOrders
 description: ""
 method: GET

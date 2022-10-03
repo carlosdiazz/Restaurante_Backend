@@ -1,9 +1,9 @@
 _id: req_7ca3e7932df6456d82a7fb90fb5ab121
 type: Request
 parentId: fld_bb058c18bfa641cbaaa011059085f862
-modified: 1664396686766
+modified: 1664569445699
 created: 1663455385129
-url: "{{ _.URL }}/api/v1/users/63344ae562b2098fb6a9cbb2"
+url: "{{ _.URL }}/api/v1/users/6336ecb271063d4e1e426818"
 name: updateUser
 description: ""
 method: PUT

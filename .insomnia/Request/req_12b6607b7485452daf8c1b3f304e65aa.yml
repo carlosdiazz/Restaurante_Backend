@@ -1,9 +1,9 @@
 _id: req_12b6607b7485452daf8c1b3f304e65aa
 type: Request
 parentId: fld_de16909af8694369b8d3b3651048d02b
-modified: 1664403125391
+modified: 1664823971461
 created: 1664403111381
-url: "{{ _.URL }}/api/v1/tables"
+url: "{{ _.URL }}/api/v1/tables?number=5"
 name: getAllTable
 description: ""
 method: GET
