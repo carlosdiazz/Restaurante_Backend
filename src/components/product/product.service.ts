@@ -33,6 +33,10 @@ export const getAllProduct = async(req: Request, res: Response, next: NextFuncti
             }
         }
 
+        if(req.query.id_category){
+            filter['id_category'] = req.query.id_category
+        }
+
         const products = await ProductModel.find(filter).populate('id_category', 'name description _id')
 
         if(!products){
