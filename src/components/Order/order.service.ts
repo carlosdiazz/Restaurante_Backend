@@ -3,6 +3,7 @@ import {Request, Response, NextFunction} from 'express'
 import {sucessResponse} from '../../libs/succesResponse'
 import orderModel from './order.model'
 import {comprobarClaveProductoIndividual, comprobarClaveTable, comprobarPayment} from '../../libs/ValidarExistenciaClaveSecundaria'
+import {Status_Order_ENUM} from '../../libs/Enums'
 
 export const getOneOrder = async(req:Request, res: Response, next: NextFunction) => {
     try{
@@ -145,6 +146,11 @@ export const deleteOrder = async(req:Request, res: Response, next: NextFunction)
         if(!order){
             throw boom.notFound("Esta orden no existe")
         }
+
+        if(order.status === Status_Order_ENUM.DELIVERED){
+            throw boom.notFound("No se puede eliminar, esta orden ya fue despachada")
+        }
+
         const orderDelete = await orderModel.findByIdAndRemove(id)
         console.log(orderDelete)
         if(!orderDelete){
