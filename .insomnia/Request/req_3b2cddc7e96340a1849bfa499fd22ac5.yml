@@ -1,17 +1,17 @@
-_id: req_8e192b0eeead4548b5902d1b0fa5cbe4
+_id: req_3b2cddc7e96340a1849bfa499fd22ac5
 type: Request
-parentId: fld_43f62c24783c452e93dbb07c4002d2b5
-modified: 1666142804809
-created: 1664487248723
-url: "{{ _.URL }}/api/v1/order/6348ad63df7df3f29be79a18"
-name: deleteOrder
+parentId: fld_97d10daa403645a48b17ef1e1a9c5c57
+modified: 1666134882383
+created: 1666134846176
+url: "{{ _.URL }}/api/v1/inventory"
+name: getAllInventory
 description: ""
-method: DELETE
+method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1664455526374.125
+metaSortKey: -1663455254485.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

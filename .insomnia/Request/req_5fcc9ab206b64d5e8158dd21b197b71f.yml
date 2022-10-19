@@ -1,9 +1,9 @@
-_id: req_68fba9878ee045788602a99b9e236230
+_id: req_5fcc9ab206b64d5e8158dd21b197b71f
 type: Request
 parentId: fld_646bdd62c40548d7a51fce3f3d4ab770
-modified: 1664847105793
-created: 1663472716304
-url: "{{ _.URL }}/api/v1/products?id_category=6339a9d5b77325570301c49c"
+modified: 1666135513930
+created: 1666135509674
+url: "{{ _.URL }}/api/v1/products"
 name: getAllProduct
 description: ""
 method: GET
@@ -17,7 +17,7 @@ headers:
 authentication:
   type: bearer
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmEyNjQ4Yzg0MjdmNDBkZTYzY2I5ZiIsImlhdCI6MTY2MzcwNjY5Nn0.4NARhPgdX892Yim8k5Jg5ahW8gwT6yErjVL3CdPSLJEss
-metaSortKey: -1663472716304
+metaSortKey: -1663472715553.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
