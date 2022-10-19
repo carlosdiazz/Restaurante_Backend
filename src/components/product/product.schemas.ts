@@ -4,7 +4,7 @@ import {is_active_products_ENUM} from '../../libs/Enums'
 const name = z.string().min(1).max(50)
 const description = z.string().min(1).max(50)
 const price = z.number().min(1)
-const stock = z.number().min(1)
+const stock = z.number()
 const id = z.string({required_error: "Este no es un ID valido"}).regex(/^[0-9a-fA-F]{24}$/);
 const id_category = z.string({required_error: "Esta no es una categoria valida"}).regex(/^[0-9a-fA-F]{24}$/);
 const img_url = z.string().url()

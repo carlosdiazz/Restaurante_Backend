@@ -21,3 +21,7 @@ export enum is_active_products_ENUM {
     TRUE    =   "TRUE",
     FALSE   =   "FALSE"
 }
+export enum tipo_Movimiento_inventory_ENUM {
+    RETIRO = 'RETIRO',
+    INGRESO = 'INGRESO'
+}

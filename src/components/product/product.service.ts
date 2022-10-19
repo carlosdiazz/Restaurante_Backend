@@ -1,9 +1,10 @@
 import {sucessResponse} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
 import ProductModel from './product.models'
+import InventoryModel from '../inventory/inventory.models'
 import {Request,Response, NextFunction} from 'express'
 import {comprobarCategory} from '../../libs/ValidarExistenciaClaveSecundaria'
-import {is_active_products_ENUM} from '../../libs/Enums'
+import {is_active_products_ENUM, tipo_Movimiento_inventory_ENUM} from '../../libs/Enums'
 
 export const getOneProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
@@ -54,9 +55,23 @@ export const createProduct = async(req: Request, res: Response, next: NextFuncti
         const product = req.body;
         const newProduct = new ProductModel(product)
         const productSaved = await newProduct.save()
+
         if(!productSaved){
             throw boom.badRequest('Error al crear el producto')
         }
+
+        const new_inventory = new InventoryModel({
+            movimiento: productSaved.stock,
+            id_product: productSaved._id,
+            tipo_movimiento: tipo_Movimiento_inventory_ENUM.INGRESO
+        })
+
+        const new_inventory_Post= await new_inventory.save()
+
+        if(!new_inventory_Post){
+            throw boom.badRequest('Error al crear el Inventario')
+        }
+
         sucessResponse(req, res, productSaved, 'Producto creado',201)
     }catch(error){
         next(error)
@@ -84,15 +99,42 @@ export const updateProduct = async(req: Request, res: Response, next: NextFuncti
     try{
         const {id} = req.params
         const {name, description, price, image, is_active, img_url} = req.body;
+        let {stock} = req.body;
         const productUdated = await ProductModel.findById(id)
         if(!productUdated){
             throw boom.notFound('Producto no encontrado')
         }
+
+        if(stock >=0 ){
+            const new_inventory = new InventoryModel({
+                movimiento: stock,
+                id_product: productUdated._id,
+                tipo_movimiento: tipo_Movimiento_inventory_ENUM.INGRESO
+            })
+            await new_inventory.save()
+            stock = productUdated.stock + stock
+
+        }else{
+            if(productUdated.stock >= (stock * -1)){
+                const new_inventory = new InventoryModel({
+                    movimiento: stock,
+                    id_product: productUdated._id,
+                    tipo_movimiento: tipo_Movimiento_inventory_ENUM.RETIRO
+                })
+                await new_inventory.save()
+                stock = productUdated.stock + stock
+            }else{
+                throw boom.badRequest('No puede ser menor que el stock original')
+            }
+        }
+
+
         const productUdated2 = await ProductModel.findByIdAndUpdate(id,{
             name: name,
             description: description,
             price: price,
             image: image,
+            stock:stock,
             is_active: is_active,
             img_url: img_url
         },{new: true})
