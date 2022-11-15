@@ -1,0 +1,21 @@
+_id: req_5804a851c80c4faea80353179f07eff4
+type: Request
+parentId: fld_308d510847c2496cab2e97db94a06428
+modified: 1668542535337
+created: 1668541940824
+url: "{{ _.URL }}/api/v1/payment?date_inicial=2022-10-20&date_final=2022-10-21"
+name: getAllPaymentParametrosDate
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1664545153844.875
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
