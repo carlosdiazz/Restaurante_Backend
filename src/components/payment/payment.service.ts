@@ -27,25 +27,34 @@ export const getAllPayment = async(req:Request, res: Response, next: NextFunctio
         let filter = {}
         let filter_sort = {}
 
-        if(req.query.id_table){
-            filter['id_table'] = req.query.id_table
+        const { id_table, status_Payment, orderCreated_At, date_inicial, date_final } = req.query
+
+        if(id_table){
+            filter['id_table'] = id_table
         }
 
-        if(req.query.status_Payment){
-            if(req.query.status_Payment === Status_Payment_ENUM.PENDING) {
-                filter['status_Payment'] = req.query.status_Payment
+        if(status_Payment){
+            if(status_Payment === Status_Payment_ENUM.PENDING) {
+                filter['status_Payment'] = status_Payment
             }
-            if(req.query.status_Payment === Status_Payment_ENUM.PAID) {
-                filter['status_Payment'] = req.query.status_Payment
+            if(status_Payment === Status_Payment_ENUM.PAID) {
+                filter['status_Payment'] = status_Payment
             }
         }
 
-        if(req.query.orderCreated_At){
-            if(req.query.orderCreated_At === orderCreated_At_ENUM.ASC){
+        if(orderCreated_At){
+            if(orderCreated_At === orderCreated_At_ENUM.ASC){
                 filter_sort['createdAt'] = -1
             }
-            if(req.query.orderCreated_At === orderCreated_At_ENUM.DES){
+            if(orderCreated_At === orderCreated_At_ENUM.DES){
                 filter_sort['createdAt'] = 1
+            }
+        }
+
+        if(date_inicial as string && date_final as string){
+            filter['createdAt'] = {
+                $gte: new Date(date_inicial as string),
+                $lt: new Date(date_final as string)
             }
         }
 
