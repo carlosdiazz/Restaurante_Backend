@@ -13,6 +13,16 @@ export const getAllInventory = async(req:Request, res: Response, next: NextFunct
             filter['tipo_movimiento'] = tipo_movimiento
         }
 
+        if (id_product) {
+            filter['id_product'] = id_product
+        }
+
+        if(date_inicial && date_final){
+            filter['createdAt'] = {
+                $gte: new Date(date_inicial as string),
+                $lt: new Date(date_final as string)
+            }
+        }
 
         const inventory = await InventoryModel.find(filter).populate('id_product', 'name img_url is_active ')
 
