@@ -1,17 +1,19 @@
-_id: req_3b2cddc7e96340a1849bfa499fd22ac5
+_id: req_8f4159c6775d4387aaef958bbd1b03c4
 type: Request
 parentId: fld_97d10daa403645a48b17ef1e1a9c5c57
-modified: 1668567187239
-created: 1666134846176
-url: "{{ _.URL }}/api/v1/inventory"
-name: getAllInventory
+modified: 1668567225826
+created: 1668567091865
+url: "{{ _.URL
+  }}/api/v1/inventory?id_product=63508924a02ec3bd93ff00ac&date_inicial=2020-10-\
+  10&date_final=2020-10-10"
+name: getAllInventoryQuery
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1663455254485.5
+metaSortKey: -1663451942953.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

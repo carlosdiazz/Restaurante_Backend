@@ -1,17 +1,19 @@
-_id: req_3b2cddc7e96340a1849bfa499fd22ac5
+_id: req_a216d11e5a0a456184680183649897bc
 type: Request
 parentId: fld_97d10daa403645a48b17ef1e1a9c5c57
-modified: 1668567187239
-created: 1666134846176
-url: "{{ _.URL }}/api/v1/inventory"
-name: getAllInventory
+modified: 1668569667284
+created: 1668569645899
+url: "{{ _.URL
+  }}/api/v1/inventory?id_product=63508924a02ec3bd93ff00ac&tipo_movimiento=INGRE\
+  SO"
+name: getAllInventoryQuery
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1663455254485.5
+metaSortKey: -1663450287187.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
