@@ -27,10 +27,14 @@ export const getAllPayment = async(req:Request, res: Response, next: NextFunctio
         let filter = {}
         let filter_sort = {}
 
-        const { id_table, status_Payment, orderCreated_At, date_inicial, date_final } = req.query
+        const { id_table, status_Payment, orderCreated_At, date_inicial, date_final, payment_Type } = req.query
 
         if(id_table){
             filter['id_table'] = id_table
+        }
+
+        if (payment_Type) {
+            filter['payment_Type'] = payment_Type
         }
 
         if(status_Payment){
@@ -51,7 +55,7 @@ export const getAllPayment = async(req:Request, res: Response, next: NextFunctio
             }
         }
 
-        if(date_inicial as string && date_final as string){
+        if(date_inicial && date_final){
             filter['createdAt'] = {
                 $gte: new Date(date_inicial as string),
                 $lt: new Date(date_final as string)

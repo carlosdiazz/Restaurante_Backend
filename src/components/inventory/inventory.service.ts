@@ -7,6 +7,12 @@ export const getAllInventory = async(req:Request, res: Response, next: NextFunct
     try{
 
         const filter ={}
+        const {id_product, tipo_movimiento, date_inicial, date_final} = req.query
+
+        if (tipo_movimiento) {
+            filter['tipo_movimiento'] = tipo_movimiento
+        }
+
 
         const inventory = await InventoryModel.find(filter).populate('id_product', 'name img_url is_active ')
 

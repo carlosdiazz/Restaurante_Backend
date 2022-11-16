@@ -51,7 +51,8 @@ export const getAllPayment = z.object({
         status_Payment: status_Payment.optional(),
         orderCreated_At: orderCreated_At.optional(),
         date_inicial :  date.optional(),
-        date_final : date.optional()
+        date_final: date.optional(),
+        payment_Type: payment_Type.optional()
     })
 })
 
