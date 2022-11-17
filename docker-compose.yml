@@ -6,9 +6,9 @@ services:
     container_name: Mongo_Res
     restart: always
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
-      - MONGO_INITDB_DATABASE=RESTAURANTE
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: RESTAURANTE
     volumes:
       - ./data/db:/data/db
     ports:

@@ -74,7 +74,7 @@ export const deletetable = async(req: Request, res: Response, next: NextFunction
 
         const comprobarUso = await orderModel.find({id_table:id})
         if(comprobarUso.length >=1){
-            throw boom.badRequest('Error al eliminar la Table tienes pedidos pendientes')
+            throw boom.badRequest('Error al eliminar la Table, ya se han registrado pagos')
         }
 
 

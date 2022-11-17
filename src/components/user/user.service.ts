@@ -1,7 +1,8 @@
 import {sucessResponse} from '../../libs/succesResponse'
 import boom from '@hapi/boom'
 import userModel from './user.models'
-import {Request,Response, NextFunction} from 'express'
+import { Request, Response, NextFunction } from 'express'
+import {encryptPasswoird} from '../../libs/encryptedPassword'
 //import { createUserType } from './user.schemas'
 //import {encryptPasswoird} from '../../libs/encryptedPassword'
 
@@ -84,24 +85,38 @@ export const deleteUser = async(req: Request, res: Response, next: NextFunction)
 export const updateUser = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
-        //! No se puede actualizar la contraseña
-        const {first_name, last_name, nickname, email, is_staff, is_active} = req.body
+
+        const {first_name, last_name, nickname, email, is_staff, is_active, password} = req.body
 
         const userUpdated = await userModel.findById(id)
         if(!userUpdated){
             throw boom.notFound('Usuario no encontrado')
         }
 
-        //! Arreglar el cambio de contrasena
-        const userUpdated2 = await userModel.findByIdAndUpdate(id, {
-            first_name: first_name,
-            last_name: last_name,
-            nickname: nickname,
-            email: email,
-            is_staff: is_staff,
-            is_active: is_active,
-            //password: password,
-        }, {new: true})
+        let userUpdated2;
+        if (password) {
+            const passwordEncrypted = await encryptPasswoird(password)
+            userUpdated2 = await userModel.findByIdAndUpdate(id, {
+                first_name: first_name,
+                last_name: last_name,
+                nickname: nickname,
+                email: email,
+                is_staff: is_staff,
+                is_active: is_active,
+                password: passwordEncrypted,
+            }, { new: true })
+        } else {
+            userUpdated2 = await userModel.findByIdAndUpdate(id, {
+                first_name: first_name,
+                last_name: last_name,
+                nickname: nickname,
+                email: email,
+                is_staff: is_staff,
+                is_active: is_active,
+                //password: passwordEncrypted,
+            }, { new: true })
+        }
+
         if(!userUpdated){
             throw boom.notFound('Usuario no encontrado')
         }

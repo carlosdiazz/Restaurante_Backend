@@ -98,7 +98,7 @@ export const deleteProduct = async(req: Request, res: Response, next: NextFuncti
 export const updateProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const {id} = req.params
-        const {name, description, price, image, is_active, img_url} = req.body;
+        const {name, description, price, image, is_active, img_url, id_category } = req.body;
         let {stock} = req.body;
         const productUdated = await ProductModel.findById(id)
         if(!productUdated){
@@ -136,7 +136,8 @@ export const updateProduct = async(req: Request, res: Response, next: NextFuncti
             image: image,
             stock:stock,
             is_active: is_active,
-            img_url: img_url
+            img_url: img_url,
+            id_category: id_category,
         },{new: true})
         if(!productUdated2){
             throw boom.badRequest('Error al actualizar el producto')
