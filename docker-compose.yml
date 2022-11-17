@@ -1,19 +1,19 @@
-version: '3.5'
-
-services:
-  mongo:
-    image: mongo
-    container_name: Mongo_Res
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: RESTAURANTE
-    volumes:
-      - ./data/db:/data/db
-    ports:
-      - 27017:27017
-
+#version: '3.5'
+#
+#services:
+#  mongo:
+#    image: mongo
+#    container_name: Mongo_Res
+#    restart: always
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: root
+#      MONGO_INITDB_DATABASE: RESTAURANTE
+#    volumes:
+#      - ./data/db:/data/db
+#    ports:
+#      - 27017:27017
+#
 
 
   #mongo-express:
