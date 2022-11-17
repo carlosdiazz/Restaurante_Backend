@@ -92,11 +92,12 @@ export const updateUser = async(req: Request, res: Response, next: NextFunction)
         if(!userUpdated){
             throw boom.notFound('Usuario no encontrado')
         }
+        let user = {};
 
-        let userUpdated2;
         if (password) {
+            console.log(password)
             const passwordEncrypted = await encryptPasswoird(password)
-            userUpdated2 = await userModel.findByIdAndUpdate(id, {
+            user = {
                 first_name: first_name,
                 last_name: last_name,
                 nickname: nickname,
@@ -104,18 +105,21 @@ export const updateUser = async(req: Request, res: Response, next: NextFunction)
                 is_staff: is_staff,
                 is_active: is_active,
                 password: passwordEncrypted,
-            }, { new: true })
+            }
+            console.log(user)
         } else {
-            userUpdated2 = await userModel.findByIdAndUpdate(id, {
+            user = {
                 first_name: first_name,
                 last_name: last_name,
                 nickname: nickname,
                 email: email,
                 is_staff: is_staff,
                 is_active: is_active,
-                //password: passwordEncrypted,
-            }, { new: true })
+            }
+            console.log(user)
         }
+
+        const userUpdated2 = await userModel.findByIdAndUpdate(id,user)
 
         if(!userUpdated){
             throw boom.notFound('Usuario no encontrado')

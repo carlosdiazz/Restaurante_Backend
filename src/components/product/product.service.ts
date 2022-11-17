@@ -5,6 +5,7 @@ import InventoryModel from '../inventory/inventory.models'
 import {Request,Response, NextFunction} from 'express'
 import {comprobarCategory} from '../../libs/ValidarExistenciaClaveSecundaria'
 import {is_active_products_ENUM, tipo_Movimiento_inventory_ENUM} from '../../libs/Enums'
+import orderModel from '../Order/order.model'
 
 export const getOneProduct = async(req: Request, res: Response, next: NextFunction)=>{
     try{
@@ -85,6 +86,12 @@ export const deleteProduct = async(req: Request, res: Response, next: NextFuncti
         if(!productDeleted){
             throw boom.notFound('Producto no encontrado')
         }
+
+        const comprobarUso = await orderModel.find({id_product:id})
+        if(comprobarUso.length >=1){
+            throw boom.badRequest('Error al eliminar este producto ya tiene historial de orden')
+        }
+
         const productDeleted2 = await ProductModel.findByIdAndDelete(id)
         if(!productDeleted2){
             throw boom.badRequest('Error al eliminar el producto')
