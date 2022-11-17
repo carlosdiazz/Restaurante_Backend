@@ -12,7 +12,7 @@ const main = async() => {
         // Creo roles por defecto
         await createRoles()
 
-        app.listen(PORT, ()=>{
+        app.listen(PORT as number,"0.0.0.0", () => {
             console.log(`👍El server esta arriba en el puerto: ${PORT} 👍💪`)
         })
 
